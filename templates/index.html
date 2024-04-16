@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="/static/formStyle.css"/>
+
+		<title>Health Assessment Form</title>
+	</head>
+
+	<body>
+		<div class="container-fluid">
+			<div class="d-flex align-items-center justify-content-center min-vh-100">
+				<div class="form-container" style="background-image: url('/static/bg.218316083c73.jpg')">
+					<h2 class="number-center">Celiac Prediction System</h2>
+					<form action="output">
+						<div class="form-group">
+							<div class="result" id="result"> {% block content %}{% endblock %}
+								</div>
+								<label for="abdominalPain">Abdominal Pain:</label>
+								<input type="number" size="15" id="abdominalPain" placeholder="Enter value : 1 to 10" name="ap" class="form-control"/>
+							</div>
+							<div class="form-group">
+								<label for="anemia">Anemia:</label>
+								<input type="number" size="15" id="anemia" placeholder="Enter value : 1 to 10" name="an" class="form-control"/>
+							</div>
+							<div class="form-group">
+								<label for="vomiting">Vomiting:</label>
+								<input type="number" size="15" id="vomiting" placeholder="Enter value : 1 to 10" name="vo" class="form-control"/>
+							</div>
+							<div class="form-group">
+								<label for="diarrhea">Diarrhea:</label>
+								<input type="number" size="15" id="diarrhea" placeholder="Enter value : 1 to 10" name="di" class="form-control"/>
+							</div>
+							<div class="form-group">
+								<label for="weightLoss">Weight Loss:</label>
+								<input type="number" size="15" id="weightLoss" placeholder="Enter value : 1 to 10" name="we" class="form-control"/>
+							</div>
+							<div class="form-group">
+								<label for="bmi">BMI:</label>
+								<input type="number" size="15" id="bmi" placeholder="Enter value : 1 to 40" name="bmi" class="form-control"/>
+							</div>
+							<button type="submit" class="btn btn-primary">
+								Calculate Result
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+		</body>
+	</html>

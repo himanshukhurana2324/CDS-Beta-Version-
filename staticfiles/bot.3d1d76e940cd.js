@@ -21,39 +21,35 @@ const createChatLi = (message, className) => {
   return chatLi; // return chat <li> element
 };
 
-const generateResponse = async (message, chatElement) => {
-  try {
-    // Fetch your API_KEY
-    const API_KEY = "AIzaSyBAxmvFXyWMxAehZ5GL-q4HlsxN6gqAwV0";
+const generateResponse = (chatElement) => {
+  const API_URL = "https://api.openai.com/v1/chat/completions";
+  const messageElement = chatElement.querySelector("p");
 
-    // Access your API key
-    const genAI = new GoogleGenerativeAI(API_KEY);
+  // Define the properties and message for the API request
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${API_KEY}`,
+    },
+    body: JSON.stringify({
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: userMessage }],
+    }),
+  };
 
-    // For text-only input, use the gemini-pro model
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-
-    // Generate content based on the message
-    const result = await model.generateContent(message);
-    const response = await result.response;
-    const text = await response.text();
-
-    // Update the chat element with the response data
-    const messageElement = chatElement.querySelector("p");
-    messageElement.textContent = text.trim();
-  } catch (error) {
-    // Handle errors
-    const messageElement = chatElement.querySelector("p");
-    // Add an error class to the chat element
-    messageElement.classList.add("error");
-    // Display an error message
-    messageElement.textContent =
-      "Oops! Something went wrong. Please try again.";
-    // Log the error to the console for debugging
-    console.error("Error fetching data:", error);
-  } finally {
-    // Scroll to the bottom of the chatbox
-    chatbox.scrollTo(0, chatbox.scrollHeight);
-  }
+  // Send POST request to API, get response and set the reponse as paragraph text
+  fetch(API_URL, requestOptions)
+    .then((res) => res.json())
+    .then((data) => {
+      messageElement.textContent = data.choices[0].message.content.trim();
+    })
+    .catch(() => {
+      messageElement.classList.add("error");
+      messageElement.textContent =
+        "Oops! Something went wrong. Please try again.";
+    })
+    .finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
 };
 
 const handleChat = () => {
@@ -73,7 +69,7 @@ const handleChat = () => {
     const incomingChatLi = createChatLi("Thinking...", "incoming");
     chatbox.appendChild(incomingChatLi);
     chatbox.scrollTo(0, chatbox.scrollHeight);
-    generateResponse(userMessage, incomingChatLi);
+    generateResponse(incomingChatLi);
   }, 600);
 };
 

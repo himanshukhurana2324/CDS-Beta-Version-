@@ -80,9 +80,7 @@ body {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-/* body {
-  background: #E3F2FD;
-} */
+
 .chatbot-toggler {
   position: fixed;
   bottom: 30px;
@@ -139,7 +137,7 @@ body.show-chatbot .chatbot {
   position: relative;
   text-align: center;
   color: #fff;
-  background: #724ae8;
+  background: #4967a9;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 .chatbot header span {

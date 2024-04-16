@@ -8,8 +8,8 @@ let userMessage = null; // Variable to store user's message
 const API_KEY = "PASTE-YOUR-API-KEY"; // Paste your API key here
 const inputInitHeight = chatInput.scrollHeight;
 
-//  This element will create a list element in the chatbox for the
 const createChatLi = (message, className) => {
+  // Create a chat <li> element with passed message and className
   const chatLi = document.createElement("li");
   chatLi.classList.add("chat", `${className}`);
   let chatContent =
@@ -21,55 +21,40 @@ const createChatLi = (message, className) => {
   return chatLi; // return chat <li> element
 };
 
-//  This function will fetch the response from the server and
-//  update the chat element with the response data
+const generateResponse = async (message, chatElement) => {
+  try {
+    // Fetch your API_KEY
+    const API_KEY = "AIzaSyBAxmvFXyWMxAehZ5GL-q4HlsxN6gqAwV0";
 
-const generateResponse = (message, chatElement) => {
-  // Define the server URL for fetching data
-  const SERVER_URL = "/run_script/";
-  // Construct the URL with the message encoded as a query parameter
-  const urlWithParams = `${SERVER_URL}?userMessage=${encodeURIComponent(
-    message
-  )}`;
+    // Access your API key
+    const genAI = new GoogleGenerativeAI(API_KEY);
 
-  // Log the constructed URL for debugging purposes
-  // console.log("Fetching data from:", urlWithParams);
+    // For text-only input, use the gemini-pro model
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-  // Fetch data from the server
-  fetch(urlWithParams)
-    .then((response) => {
-      // Check if the response is successful
-      if (!response.ok) {
-        // If not, throw an error
-        throw new Error("Failed to fetch data");
-      }
-      // Parse the JSON response
-      return response.json();
-      console.log(response.json());
-    })
-    .then((data) => {
-      // Update the chat element with the response data
-      const messageElement = chatElement.querySelector("p");
-      messageElement.textContent = data.response.trim();
-    })
-    .catch((error) => {
-      // Handle errors
-      const messageElement = chatElement.querySelector("p");
-      // Add an error class to the chat element
-      messageElement.classList.add("error");
-      // Display an error message
-      messageElement.textContent =
-        "Oops! Something went wrong. Please try again.";
-      // Log the error to the console for debugging
-      console.error("Error fetching data:", error);
-    })
-    .finally(() => {
-      // Scroll to the bottom of the chatbox
-      chatbox.scrollTo(0, chatbox.scrollHeight);
-    });
+    // Generate content based on the message
+    const result = await model.generateContent(message);
+    const response = await result.response;
+    const text = await response.text();
+
+    // Update the chat element with the response data
+    const messageElement = chatElement.querySelector("p");
+    messageElement.textContent = text.trim();
+  } catch (error) {
+    // Handle errors
+    const messageElement = chatElement.querySelector("p");
+    // Add an error class to the chat element
+    messageElement.classList.add("error");
+    // Display an error message
+    messageElement.textContent =
+      "Oops! Something went wrong. Please try again.";
+    // Log the error to the console for debugging
+    console.error("Error fetching data:", error);
+  } finally {
+    // Scroll to the bottom of the chatbox
+    chatbox.scrollTo(0, chatbox.scrollHeight);
+  }
 };
-
-//  This function will handle the chat input and generate the response using the helper functions
 
 const handleChat = () => {
   userMessage = chatInput.value.trim(); // Get user entered message and remove extra whitespace
@@ -80,8 +65,7 @@ const handleChat = () => {
   chatInput.style.height = `${inputInitHeight}px`;
 
   // Append the user's message to the chatbox
-  const outgoingChatLi = createChatLi(userMessage, "outgoing");
-  chatbox.appendChild(outgoingChatLi);
+  chatbox.appendChild(createChatLi(userMessage, "outgoing"));
   chatbox.scrollTo(0, chatbox.scrollHeight);
 
   setTimeout(() => {
@@ -89,8 +73,8 @@ const handleChat = () => {
     const incomingChatLi = createChatLi("Thinking...", "incoming");
     chatbox.appendChild(incomingChatLi);
     chatbox.scrollTo(0, chatbox.scrollHeight);
-    generateResponse(userMessage, incomingChatLi); // Pass the userMessage and incomingChatLi to generateResponse
-  }, 1000);
+    generateResponse(userMessage, incomingChatLi);
+  }, 600);
 };
 
 chatInput.addEventListener("input", () => {

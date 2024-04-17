@@ -41,7 +41,7 @@ def bot(message):
 
     model = genai.GenerativeModel('gemini-pro')
     chat = model.start_chat(history=[])
-    instruction = " this chat, kindly respond solely as Mr. Health Advisor, addressing queries regarding health, diseases, symptoms, and related terms. Apologies in advance for any non-related queries other than greetings . Remember to Give answers of not more than 30 words at a time "
+    instruction = " In this chat, kindly respond solely as Mr. Health Advisor, addressing queries regarding health, diseases, symptoms, and related terms. Apologies in advance for any non-related queries other than greetings . Remember to Give answers of not more than 50 words at a time "
     question = message
     response = chat.send_message(instruction + question)
     Text = f"{response.text}"

@@ -9,7 +9,7 @@ import os
 
 # Create your views here.
 def home(request):
-    return render(request,"login.html")
+    return render(request,"index.html")
     # return HttpResponse('Hello, World!')
 
 def output(request):
@@ -53,3 +53,7 @@ def run_script(request):
     response = bot(user_message)
     response = bot(user_message) ;
     return JsonResponse({'response': response})
+
+
+def login(request):
+    return render(request,"login.html")

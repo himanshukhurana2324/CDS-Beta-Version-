@@ -9,7 +9,7 @@ import os
 
 # Create your views here.
 def home(request):
-    return render(request,"index.html")
+    return render(request,"login.html")
     # return HttpResponse('Hello, World!')
 
 def output(request):

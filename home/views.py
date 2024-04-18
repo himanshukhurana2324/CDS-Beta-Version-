@@ -12,6 +12,9 @@ def home(request):
     return render(request,"index.html")
     # return HttpResponse('Hello, World!')
 
+def dashboard(request):
+    return render(request,"dashboard.html")
+
 def output(request):
     ap = float(request.GET["ap"])
     an = float(request.GET["an"])
@@ -55,5 +58,3 @@ def run_script(request):
     return JsonResponse({'response': response})
 
 
-def login(request):
-    return render(request,"login.html")

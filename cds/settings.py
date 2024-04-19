@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-q=evdx^ubbpb^_4k6-2)q#jm)w(8d4nmqq6@1f7^c-d6d4vk!3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -77,6 +77,11 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'cds.wsgi.application'
+
+
+###### Setting the custom model as the default user model ######
+
+AUTH_USER_MODEL = 'user.signup'
 
 
 # Database

@@ -14,15 +14,18 @@
 <body>
     <div class="container">
         <div class="signin-signup">
-            <form action="" class="sign-in-form">
+            <form action="signin" class="sign-in-form" method="post">
+                {% csrf_token %}
                 <h2 class="title">Sign in</h2>
+
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Username">
+                    <input type="email" placeholder="enter your registered mail" name='email'>
                 </div>
+
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Password" name='password'>
                 </div>
                 <input type="submit" value="Login" class="btn">
                 <p class="social-text">Or Sign in with social platform</p>
@@ -89,10 +92,21 @@
 
                 <input type="submit" value="Sign up" class="btn">
 
+
                 <p class="account-text">Already have an account?
                     <a href="#" id="sign-in-btn2">Sign in</a>
                 </p>
             </form>
+
+        </div>
+        <div>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
         </div>
         <div class="panels-container">
             <div class="panel left-panel">

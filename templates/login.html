@@ -40,43 +40,58 @@
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
-                <p class="account-text">Don't have an account? <a href="#" id="sign-up-btn2">Sign up</a></p>
+                <p class="account-text">Don't have an account?
+                    <a href="#" id="sign-up-btn2">Sign up</a>
+                </p>
             </form>
-            <form action="" class="sign-up-form">
+            <form action="register" class="sign-up-form" method="post">
+
+                {% csrf_token %}
+
                 <h2 class="title">Sign Up</h2>
                 <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Fullname" name="username" required>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Age" name="age">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Gender" name="gender">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="state" name="state">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Blood Group" name="bloodGroup">
+                </div>
+                <div class="input-field">
                     <i class="fas fa-envelope"></i>
-                    <input type="text" placeholder="Email">
+                    <input type="text" placeholder="Email" name="email">
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Password" name="password">
                 </div>
                 <div class="input-field">
-                    <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Fullname">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Confirm Password" name="cpassword">
                 </div>
-                <div class="input-field">
+                <!-- <div class="input-field">
                     <i class="fas fa-user"></i>
                     <input type="text" placeholder="Phone">
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Age">
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Blood Group">
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Gender">
-                </div>
+                </div> -->
 
 
                 <input type="submit" value="Sign up" class="btn">
 
-                <p class="account-text">Already have an account? <a href="#" id="sign-in-btn2">Sign in</a></p>
+                <p class="account-text">Already have an account?
+                    <a href="#" id="sign-in-btn2">Sign in</a>
+                </p>
             </form>
         </div>
         <div class="panels-container">

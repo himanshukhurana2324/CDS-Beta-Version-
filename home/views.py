@@ -2,16 +2,22 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from . import cds6 as cds 
 from django.http import JsonResponse
-
+from home.models import Symptoms
+from user.models import signup
 import google.generativeai as genai 
 from dotenv import load_dotenv
+from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 import os
+
+
 
 # Create your views here.
 def home(request):
     return render(request,"index.html")
     # return HttpResponse('Hello, World!')
 
+@login_required
 def dashboard(request):
     return render(request,"dashboard.html")
 
@@ -31,11 +37,25 @@ def output(request):
     cds.Bmi_var = bmi
     
     res = round(float(cds.Calculate()))
-    
-    
-    # # return render(request,'result.html')
+     # Get the user who is currently logged in
+    current_user = signup.objects.get(email=request.user.email)
+
+    # Get the existing Symptoms instance for the current user, or create a new one if it doesn't exist
+    symptoms, created = Symptoms.objects.get_or_create(patient=current_user)
+
+    # Append the new values to the existing values in the JSON fields
+    symptoms.abdPain.append({"value": ap, "timestamp": timezone.now().isoformat()})
+    symptoms.anemmia.append({"value": an, "timestamp": timezone.now().isoformat()})
+    symptoms.diarhea.append({"value": di, "timestamp": timezone.now().isoformat()})
+    symptoms.vomit.append({"value": vo, "timestamp": timezone.now().isoformat()})
+    symptoms.bmi.append({"value": bmi, "timestamp": timezone.now().isoformat()})
+    symptoms.cdsAnalysis.append({"value": res, "timestamp": timezone.now().isoformat()})
+    symptoms.weightLoss.append({"value": we, "timestamp": timezone.now().isoformat()})
+    # Save the Symptoms instance back to the database
+    symptoms.save()
     
     return render(request,'result.html',{'res':res})
+
 def bot(message):
     load_dotenv()
     API_KEY = os.getenv('GEMINI_API_KEY')

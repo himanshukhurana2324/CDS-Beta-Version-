@@ -9,4 +9,5 @@ class Symptoms(models.Model):
     vomit = models.JSONField(default=list, blank=True)
     diarhea = models.JSONField(default=list, blank=True)
     bmi = models.JSONField(default=list, blank=True)
+    weightLoss = models.JSONField(default=list, blank=True)
     cdsAnalysis = models.JSONField(default=list, blank=True)

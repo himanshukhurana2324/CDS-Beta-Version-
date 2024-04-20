@@ -13,6 +13,7 @@ import os
 
 
 # Create your views here.
+@login_required
 def home(request):
     return render(request,"index.html")
     # return HttpResponse('Hello, World!')
@@ -44,13 +45,13 @@ def output(request):
     symptoms, created = Symptoms.objects.get_or_create(patient=current_user)
 
     # Append the new values to the existing values in the JSON fields
-    symptoms.abdPain.append({"value": ap, "timestamp": timezone.now().isoformat()})
-    symptoms.anemmia.append({"value": an, "timestamp": timezone.now().isoformat()})
-    symptoms.diarhea.append({"value": di, "timestamp": timezone.now().isoformat()})
-    symptoms.vomit.append({"value": vo, "timestamp": timezone.now().isoformat()})
-    symptoms.bmi.append({"value": bmi, "timestamp": timezone.now().isoformat()})
-    symptoms.cdsAnalysis.append({"value": res, "timestamp": timezone.now().isoformat()})
-    symptoms.weightLoss.append({"value": we, "timestamp": timezone.now().isoformat()})
+    symptoms.abdPain.append({"value": ap, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
+    symptoms.anemmia.append({"value": an, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
+    symptoms.diarhea.append({"value": di, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
+    symptoms.vomit.append({"value": vo, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
+    symptoms.bmi.append({"value": bmi, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
+    symptoms.cdsAnalysis.append({"value": res, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
+    symptoms.weightLoss.append({"value": we, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
     # Save the Symptoms instance back to the database
     symptoms.save()
     

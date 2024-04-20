@@ -26,7 +26,7 @@ const createChatLi = (message, className) => {
 
 const generateResponse = (message, chatElement) => {
   // Define the server URL for fetching data
-  const SERVER_URL = "/run_script/";
+  const SERVER_URL = "/home/run_script/";
   // Construct the URL with the message encoded as a query parameter
   const urlWithParams = `${SERVER_URL}?userMessage=${encodeURIComponent(
     message

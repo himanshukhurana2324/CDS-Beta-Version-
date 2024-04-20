@@ -144,4 +144,10 @@ STATIC_ROOT=os.path.join(BASE_DIR,'assets')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+LOGIN_URL = 'signin'
+
 django_heroku.settings(locals())

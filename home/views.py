@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from . import cds6 as cds 
@@ -109,22 +110,25 @@ def profileUpdate(request):
         profileBG = request.POST.get('profileBG', None)
         profileState = request.POST.get('profileState', None)
         profileName = request.POST.get('profileName', None)
-
+        profileAge = request.POST.get('profileAge', None)
         # Get the user's profile
         current_user = signup.objects.get(email=request.user.email)
       
 
         # Update the fields with the new values
-        if profileName is not None and profileGender != '':
+        if profileName is not None and profileName != '' and re.match(r'^[a-zA-Z\s]+$', profileName):
             current_user.username = profileName
 
-        if profileGender is not None and profileGender != '':
+        if profileAge is not None and profileAge != '' and re.match(r'^\d+$', profileAge )and (int(profileAge) > 0) and (int(profileAge) < 90):
+            current_user.age = profileAge
+
+        if profileGender is not None and profileGender != '' and re.match(r'^(Male|Female|Other)$', profileGender, re.I):
             current_user.gender = profileGender
-            
-        if profileBG is not None and profileBG != '':
-            current_user.bloodGroup = profileBG  
-            
-        if profileState is not None and profileState != '':
+
+        if profileBG is not None and profileBG != '' and re.match(r'^(A|B|AB|O)[+-]$', profileBG):
+            current_user.bloodGroup = profileBG
+
+        if profileState is not None and profileState != '' and re.match(r'^[a-zA-Z\s]+$', profileState):
             current_user.state = profileState
             
         

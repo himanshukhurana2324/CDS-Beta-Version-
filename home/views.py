@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 import os
+from django.contrib import auth
 
 
 
@@ -140,3 +141,7 @@ def profileUpdate(request):
 
         return redirect('home')
 
+
+def logout(request):
+    auth.logout(request)
+    return redirect('login')

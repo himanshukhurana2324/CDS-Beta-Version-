@@ -1,0 +1,279 @@
+{% extends 'dashboard.html' %}
+
+{% block content %}
+
+<div class="main--container">
+  <div class="section--title">
+
+
+
+    <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery/2.2.1/jquery.min.js"></script>
+
+
+    <style type="text/css">
+      .faq {
+        text-align: center;
+        justify-content: center;
+        padding: 20px;
+        width: 80%;
+      }
+
+      .faq-icon {
+        height: 18px;
+        width: 18px;
+        margin-top: 3px;
+      }
+
+      .accordion {
+        background-color: khaki;
+        color: #282A35;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        text-align: left;
+        border: none;
+        border-radius: 10px;
+        outline: none;
+        transition: 0.4s;
+      }
+
+      .active,
+      .accordion:hover {
+        background-color: yellow;
+        color: #282A35;
+      }
+
+      .active {
+        border-radius: 10px 10px 0px 0px;
+      }
+
+      .details-description {
+        font-size: 22px;
+        margin-top: 20px
+      }
+
+      .panel {
+        padding: 0 10px;
+        padding-left: 40px;
+        padding-right: 40px;
+        background-color: #f3ecea;
+        margin-top: -28px;
+        color: #282A35;
+        display: none;
+        overflow: hidden;
+        border-radius: 0px 0px 10px 10px;
+        text-align: left;
+      }
+
+      .panel,
+      .accordion {
+        margin-bottom: 2rem;
+      }
+
+      button.accordion {
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      .paragraphs {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        white-space: pre-wrap;
+      }
+    </style>
+
+    <div class="w3-center w3-animate-zoom" style="margin-top: -1px;">
+      <div class="w3-center w3-content">
+        <div class="faq w3-center w3-content" style="padding-left: 400px;">
+          <h2 class="accordion" style="color: #000000;"><b>Frequently Asked Questions</b></h2><br>
+          <button class="accordion" style="display: flex; flex-direction: row;"><img class="faq-icon"
+              src="https://cdn.jsdelivr.net/gh/linuxguist/faqa@main/chevron-down.svg"> &nbsp; &nbsp; <b
+              style="padding-top: 2px;">What is an FAQ page?</b></button>
+          <div class="panel" style="display: none;">
+            <div class="paragraphs" id="myDiv_id1"></div>
+            <p id="paragraph_id1" style="display: none;">Frequently Asked Questions (FAQ) pages contain a list of
+              commonly asked questions and answers on a website about topics such as hours, shipping and handling,
+              product information, and return policies.
+
+              Sure there are chatbots, support lines, and customer reviews to help shoppers on their path to purchase,
+              but there’s one forgotten customer service tactic that is cost-effective and streamlined. That tactic is
+              an FAQ page.
+            </p>
+          </div>
+          <button class="accordion" style="display: flex; flex-direction: row;"><img class="faq-icon"
+              src="https://cdn.jsdelivr.net/gh/linuxguist/faqa@main/chevron-down.svg"> &nbsp; &nbsp; <b
+              style="padding-top: 2px;">Why you should make an FAQ page?</b></button>
+          <div class="panel" style="display: none;">
+            <div class="paragraphs" id="myDiv_id2"></div>
+            <p id="paragraph_id2" style="display: none;">An FAQ page is a time-saving customer service tactic that
+              provides the most commonly asked questions and answers for current or potential customers.
+
+              Before diving into how to make an FAQ page, you need to know why having one is so important. There are so
+              many reasons beyond improving the customer experience for perfecting your FAQ page. Keep in mind the
+              importance of an FAQ page when developing your own e-commerce website so you can make sure it increases
+              sales and not the other way around.
+            </p>
+          </div>
+          <button class="accordion" style="display: flex; flex-direction: row;"><img class="faq-icon"
+              src="https://cdn.jsdelivr.net/gh/linuxguist/faqa@main/chevron-down.svg"> &nbsp; &nbsp; <b
+              style="padding-top: 2px;">How to make an FAQ page?</b></button>
+          <div class="panel" style="display: none;">
+            <div class="paragraphs" id="myDiv_id3"></div>
+            <p id="paragraph_id3" style="display: none;">There are seven simple steps to make the perfect FAQ page for
+              your business. The design of an FAQ page is crucial for an easy-to-use customer experience. Follow these
+              steps and your customer success team will thank you.
+
+              1. Determine the questions
+              2. Categorize the questions
+              3. Highlight or link the most popular questions
+              4. Include a search bar
+              5. Align with your brand look and feel
+              6. Update regularly
+              7. Track and improve
+            </p>
+          </div>
+          <button class="accordion" style="display: flex; flex-direction: row;"><img class="faq-icon"
+              src="https://cdn.jsdelivr.net/gh/linuxguist/faqa@main/chevron-down.svg"> &nbsp; &nbsp; <b
+              style="padding-top: 2px;">What are the most frequently asked questions?</b></button>
+          <div class="panel" style="display: none;">
+            <div class="paragraphs" id="myDiv_id4"></div>
+            <p id="paragraph_id4" style="display: none;">A good FAQ is general enough to address many issues. There are
+              questions that just about every company answers on their FAQ page, so if you’re struggling to get started
+              use these as your starting point. If they’re relevant to your company, of course.
+
+              1. What is the return policy?
+              2. What are the shipping options?
+              3. What do I do if I never received my order?
+              4. When will I receive my order?
+              5. How do I make sure I order the right size?
+              6. Where are you located?
+              7. Can I make changes to an order I already placed?
+              8. How do I get a new password?
+            </p>
+
+            <script>
+              var acc = document.getElementsByClassName("accordion");
+              var i;
+              for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function () {
+                  this.classList.toggle("active");
+                  var panel = this.nextElementSibling;
+                  if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                    // clearBox('myDiv_id1')
+                  } else {
+                    panel.style.display = "block";
+                    var firstElementChild = panel.children[0].id;
+                    var secondElementChild = panel.children[1].id;
+                    // console.log(firstElementChild);
+                    // console.log(secondElementChild);
+
+                    var text = document.getElementById(secondElementChild).innerHTML;
+
+                    responsiveVoice.speak(text, 'UK English Female', parameters);
+                    printStringByLetter(secondElementChild, firstElementChild);
+
+                    // console.log(text); 
+
+                    // alert('i am here');
+
+
+
+                  }
+                });
+              }
+              var images = document.querySelectorAll(".faq-icon");
+              images.forEach(function (image) {
+                image.addEventListener("click", changeImage);
+              });
+
+              function changeImage() {
+                if (this.src.match("chevron-down")) {
+                  this.src = "https://cdn.jsdelivr.net/gh/linuxguist/faqa@main/chevron-up.svg";
+                } else {
+                  this.src = "https://cdn.jsdelivr.net/gh/linuxguist/faqa@main/chevron-down.svg";
+                }
+              }
+            </script>
+
+            <script type="text/javascript">
+
+              function printStringByLetter(paragraph_id, myDiv_id) {
+                var myDiv = document.getElementById(myDiv_id);
+                var text = document.getElementById(paragraph_id).innerHTML;
+                // myDiv.innerHTML = "";
+                document.getElementById(myDiv_id).innerHTML = "";
+                // console.log(text.length);
+                var index = 0;
+                var intervalId = setInterval(function () {
+                  myDiv.innerHTML += text.charAt(index);
+                  index++;
+                  // console.log(index);
+                  if (index == text.length) {
+                    clearInterval(intervalId);
+                    index = 0;
+                    text = "";
+                  }
+                }, 50);
+              }
+
+              function clearBox(elementID) {
+                document.getElementById(elementID).innerHTML = "";
+              }
+
+            </script>
+
+            <center><a href="https://responsivevoice.org" title="ResponsiveVoice">
+                <h4 style="background-color:white">Powered By ResponsiveVoice Text-To-Speech For Non-commercial personal
+                  or non-profit project</h4>
+              </a></center>
+
+            <div id="text1" style="font-family: sans-serif, serif; font-size: 18px; display:none">
+
+              <p>Here are some of the most common types of gardens:</p>
+
+            </div>
+
+
+
+            <script>
+
+              function voiceStartCallback() {
+                console.log("Voice started");
+              }
+
+              function voiceEndCallback() {
+                console.log("Voice ended");
+              }
+
+              var parameters = {
+                onstart: voiceStartCallback,
+                onend: voiceEndCallback,
+                rate: 0.95
+              }
+
+            </script>
+
+
+            <script type="text/javascript">
+
+              /*
+              
+              responsiveVoice.speak("Hello, this is a test using callbacks","UK English Female", parameters);
+              
+              responsiveVoice.speak("hello world", "UK English Male", {pitch: 2});
+              
+              responsiveVoice.speak("hello world", "UK English Male", {rate: 1.5});
+              
+              responsiveVoice.speak("hello world", "UK English Male", {volume: 1});
+              
+              */
+
+            </script>
+
+
+          </div>
+        </div>
+
+        {% endblock %}

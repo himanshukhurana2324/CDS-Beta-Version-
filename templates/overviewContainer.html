@@ -1,0 +1,130 @@
+{% extends 'dashboard.html' %}
+
+{% block content %}
+<style>
+    .card {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: loadCard 0.5s forwards;
+        transition: transform 0.3s, opacity 0.3s;
+    }
+    @keyframes loadCard {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .card-1 {
+        animation-delay: 0.1s;
+    }
+    .card-2 {
+        animation-delay: 0.2s;
+    }
+    .card-3 {
+        animation-delay: 0.3s;
+    }
+    .card-4 {
+        animation-delay: 0.4s;
+    }
+</style>
+
+<div class="main--container">
+    <div class="section--title">
+        <h3 class="title">Welcome back, Piyush Pandey</h3>
+        <select name="date" id="date">
+            <option value="last7">Last 7 days</option>
+            <option value="lastmonth">Last month</option>
+            <option value="lastyear">Last year</option>
+            <option value="alltime">All time</option>
+        </select>
+    </div>
+    <div class="cards">
+        <div class="card card-1">
+            <div class="card--title">
+                <span class="card--icon icon"><i class="ri-shopping-bag-2-line"></i></span>
+                <span>Prediction</span>
+            </div>
+            <h3 class="card--value">80%<i class="ri-arrow-up-circle-fill up"></i></h3>
+            <h5 class="more">Go for OPD Test</h5>
+            <div class="chart">
+                <canvas id="sales"></canvas>
+            </div>
+        </div>
+        <div class="card card-2">
+            <div class="card--title">
+                <span class="card--icon icon"><i class="ri-gift-line"></i></span>
+                <span>Heath score</span>
+            </div>
+            <h3 class="card--value">80% <i class="ri-arrow-down-circle-fill down"></i></h3>
+            <h5 class="less">234 less than usual</h5>
+            <div class="chart">
+                <canvas id="orders"></canvas>
+            </div>
+        </div>
+        <div class="card card-3">
+            <div class="card--title">
+                <span class="card--icon icon"><i class="ri-handbag-line"></i></span>
+                <span>Products</span>
+            </div>
+            <h3 class="card--value">10 <i class="ri-arrow-up-circle-fill up"></i></h3>
+            <h5 class="more">23 more than usual</h5>
+            <div class="chart">
+                <canvas id="products"></canvas>
+            </div>
+        </div>
+        <div class="card card-4">
+            <div class="card--title">
+                <span class="card--icon icon"><i class="ri-user-line"></i></span>
+                <span>Blood Count</span>
+            </div>
+            <h3 class="card--value">200000<i class="ri-arrow-down-circle-fill down"></i></h3>
+            <h5 class="less">less than usual</h5>
+            <div class="chart">
+                <canvas id="customers"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="target-vs-sales--container">
+        <div class="section--title">
+            <h3 class="title">Prediction charts</h3>
+            <div class="sales--value">
+                <div class="target">
+                    <i class="ri-checkbox-blank-circle-fill circle"></i>
+                    Target <span>&nbsp; sales</span>
+                </div>
+                <div class="current">
+                    <i class="ri-checkbox-blank-circle-fill circle"></i>
+                    Current <span>&nbsp; sales</span>
+                </div>
+            </div>
+        </div>
+        <div class="target--vs--sales">
+            <canvas id="tarsale"></canvas>
+        </div>
+    </div>
+
+    <button class="chatbot-toggler">
+        <span class="material-symbols-rounded">mode_comment</span>
+        <span class="material-symbols-outlined">close</span>
+    </button>
+
+    <div class="chatbot">
+        <header>
+            <h2>Mr. Adviser </h2>
+            <span class="close-btn material-symbols-outlined">close</span>
+        </header>
+        <ul class="chatbox">
+            <li class="chat incoming">
+                <span class="material-symbols-outlined">smart_toy</span>
+                <p>Hi there 👋<br />How can I help you today?</p>
+            </li>
+        </ul>
+        <div class="chat-input">
+            <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+            <span id="send-btn" class="material-symbols-rounded">send</span>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

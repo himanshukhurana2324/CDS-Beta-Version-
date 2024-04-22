@@ -6,67 +6,44 @@
 
 
         <div class="settingsleftbox">
-            <!-- <nav class="nav">
-                <a href="#" class="settingsactive a">
-                    <i class="fa fa-user"></i>
-                </a>
-                <a href="#">
-                    <i class="settingsfa fa-credit-card"></i>
-                </a>
-                <a href="#">
-                    <i class="settingsfa fa-tv"></i>
-                </a>
-                <a href="#">
-                    <i class="settingsfa fa-tasks"></i>
-                </a>
-                <a href="#">
-                    <i class="settingsfa fa-cog"></i>
-                </a>
-            </nav> -->
+
         </div>
 
         <div class="settingsrightbox">
             <div class="settingsprofile">
-                <h1 class='heading h1'>Personal Info</h1>
-                <h2 class="value">Full Name</h2>
-                <p class="para" id='name'>{{userName}}<button class="settingsbtn">update</button></p>
+                <form action="update" method="post">
+                    {% csrf_token %}
+                    <h1 class='heading h1'>Personal Info</h1>
 
-                <h2 class="value">Age</h2>
-                <p class="para">{{userAge}}</p>
+                    <h2 class="value">Full Name</h2>
+                    <input type="text" class="para" value="{{userName}}" name="profileName">
 
-                <h2 class="value">Gender</h2>
-                <p class="para">{{userGender}}</p>
+                    <h2 class="value">Age</h2>
+                    <input type="text" class="para" value="{{userAge}}" name="profileAge">
 
-                <h2 class="value">Blood Group</h2>
-                <p class="para">{{userBG}}</p>
 
-                <h2 class="value">State</h2>
-                <p class="para">{{userState}}</p>
+                    <h2 class="value">Gender</h2>
+                    <input type="text" class="para" value="{{userGender}}" name="profileGender">
 
-                <h2 class="value">Email-ID</h2>
-                <p class="para">{{userEmail}}<button class="settingsbtn">update</button></p>
 
+                    <h2 class="value">Blood Group</h2>
+                    <input type="text" class="para" value="{{userBG}}" name="profileBG">
+
+
+                    <h2 class="value">State</h2>
+                    <input type="text" class="para" value="{{userState}}" name="profileState">
+
+
+                    <h2 class="value">Email-ID</h2>
+                    <p class="para ">{{userEmail}} </p>
+
+                    <input type="submit" value="Update">
+
+                </form>
 
             </div>
         </div>
     </div>
 </div>
-<script>
-    // Select all update buttons
-    var updateButtons = document.querySelectorAll('.settingsbtn');
 
-    // Add click event listener to each button
-    updateButtons.forEach(function (button) {
-        button.addEventListener('click', function () {
-            // Get the previous sibling (the text node)
-            var textNode = document.getElementById('name');
-
-            // Toggle the contentEditable attribute
-            textNode.contentEditable = textNode.contentEditable === 'true' ? 'false' : 'true';
-
-            // Change the text of the button
-            this.textContent = textNode.contentEditable === 'true' ? 'Save' : 'Update';
-        });
-    });
-</script>
 {% endblock %}

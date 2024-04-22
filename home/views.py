@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from . import cds6 as cds 
 from django.http import JsonResponse
@@ -80,8 +80,8 @@ def bot(message):
 def run_script(request):
     user_message = request.GET.get('userMessage', '')
     response = bot(user_message)
-    response = bot(user_message) 
     return JsonResponse({'response': response})
+    
 
 
 def overview(request):
@@ -101,4 +101,38 @@ def settings(request):
 
 def faq(request):
     return render(request,"faqContainer.html")
+
+def profileUpdate(request):
+
+    if request.method == 'POST':
+        profileGender = request.POST.get('profileGender', None)
+        profileBG = request.POST.get('profileBG', None)
+        profileState = request.POST.get('profileState', None)
+        profileName = request.POST.get('profileName', None)
+
+        # Get the user's profile
+        current_user = signup.objects.get(email=request.user.email)
+      
+
+        # Update the fields with the new values
+        if profileName is not None and profileGender != '':
+            current_user.username = profileName
+
+        if profileGender is not None and profileGender != '':
+            current_user.gender = profileGender
+            
+        if profileBG is not None and profileBG != '':
+            current_user.bloodGroup = profileBG  
+            
+        if profileState is not None and profileState != '':
+            current_user.state = profileState
+            
+        
+
+        # Save the updated profile
+        current_user.save()
+
+       
+
+        return redirect('home')
 

@@ -80,7 +80,7 @@ def bot(message):
 def run_script(request):
     user_message = request.GET.get('userMessage', '')
     response = bot(user_message)
-    response = bot(user_message) ;
+    response = bot(user_message) 
     return JsonResponse({'response': response})
 
 

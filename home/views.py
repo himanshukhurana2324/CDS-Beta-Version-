@@ -20,7 +20,12 @@ def home(request):
 
 @login_required
 def dashboard(request):
-    return render(request,"dashboard.html")
+    current_user = signup.objects.get(email=request.user.email)
+    # values = Symptoms.objects.get(patient=current_user)
+    # details = {"username": current_user.username, "email": current_user.email, 
+    #            "abdPain": values.abdPain[0], "anemmia": values.anemmia, "diarhea": values.diarhea,
+    #            "vomit": values.vomit, "bmi": values.bmi, "cdsAnalysis": values.cdsAnalysis, "weightLoss": values.weightLoss}
+    return render(request,"overviewContainer.html") 
 
 def output(request):
     ap = float(request.GET["ap"])
@@ -67,7 +72,7 @@ def bot(message):
     chat = model.start_chat(history=[])
     instruction = " In this chat, kindly respond solely as Mr. Health Advisor, addressing queries regarding health, diseases, symptoms, and related terms. Apologies in advance for any non-related queries other than greetings . Remember to Give answers of not more than 50 words at a time "
     question = message
-    response = chat.send_message(instruction + question)
+    response = chat.send_message(instruction + question) 
     Text = f"{response.text}"
     return Text
 
@@ -78,4 +83,22 @@ def run_script(request):
     response = bot(user_message) ;
     return JsonResponse({'response': response})
 
+
+def overview(request):
+    return render(request,"overviewContainer.html")
+
+def product(request): 
+    return render(request,"productContainer.html")
+
+def settings(request):
+
+    current_user = signup.objects.get(email=request.user.email)
+    # values = Symptoms.objects.get(patient=current_user)
+    details = {"userName": current_user.username, "userEmail": current_user.email,"userGender": current_user.gender,
+               "userBG": current_user.bloodGroup, "userState": current_user.state, "userAge": current_user.age}
+    return render(request,"settingsContainer.html", details)        
+    # print(current_user.username, current_user.email)
+
+def faq(request):
+    return render(request,"faqContainer.html")
 

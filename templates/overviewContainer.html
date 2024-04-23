@@ -8,21 +8,26 @@
         animation: loadCard 0.5s forwards;
         transition: transform 0.3s, opacity 0.3s;
     }
+
     @keyframes loadCard {
         to {
             opacity: 1;
             transform: translateY(0);
         }
     }
+
     .card-1 {
         animation-delay: 0.1s;
     }
+
     .card-2 {
         animation-delay: 0.2s;
     }
+
     .card-3 {
         animation-delay: 0.3s;
     }
+
     .card-4 {
         animation-delay: 0.4s;
     }
@@ -85,21 +90,9 @@
         </div>
     </div>
     <div class="target-vs-sales--container">
-        <div class="section--title">
-            <h3 class="title">Prediction charts</h3>
-            <div class="sales--value">
-                <div class="target">
-                    <i class="ri-checkbox-blank-circle-fill circle"></i>
-                    Target <span>&nbsp; sales</span>
-                </div>
-                <div class="current">
-                    <i class="ri-checkbox-blank-circle-fill circle"></i>
-                    Current <span>&nbsp; sales</span>
-                </div>
-            </div>
-        </div>
+
         <div class="target--vs--sales">
-            <canvas id="tarsale"></canvas>
+            <canvas id="cdsAnalysis" width="600" height="600 "> </canvas>
         </div>
     </div>
 
@@ -126,5 +119,33 @@
     </div>
 
 </div>
+
+<div id="timeZone" style="display:none;">{{ dates }}</div>
+<div id="results" style="display:none;">{{ cds_analysis_values }}</div>
+
+<script>
+
+
+    const ctx = document.getElementById('cdsAnalysis').getContext('2d');
+    var dates = JSON.parse(document.getElementById('timeZone').textContent);
+    var number_of_records = JSON.parse(document.getElementById('results').textContent);
+    console.log(dates);
+    console.log(number_of_records);
+    const barChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: [{
+                label: 'CDS-Analysis',
+                data: number_of_records,
+                backgroundColor: [
+                    '#FF6384',
+                ],
+            }]
+        }
+    });
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 
 {% endblock %}

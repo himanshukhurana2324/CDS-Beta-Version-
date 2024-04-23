@@ -1,3 +1,4 @@
+import json
 import re
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
@@ -11,7 +12,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 import os
 from django.contrib import auth
-
+from django.core.exceptions import ObjectDoesNotExist
 
 
 # Create your views here.
@@ -23,11 +24,33 @@ def home(request):
 @login_required
 def dashboard(request):
     current_user = signup.objects.get(email=request.user.email)
-    # values = Symptoms.objects.get(patient=current_user)
-    # details = {"username": current_user.username, "email": current_user.email, 
-    #            "abdPain": values.abdPain[0], "anemmia": values.anemmia, "diarhea": values.diarhea,
-    #            "vomit": values.vomit, "bmi": values.bmi, "cdsAnalysis": values.cdsAnalysis, "weightLoss": values.weightLoss}
-    return render(request,"overviewContainer.html") 
+    try:
+        symptoms = Symptoms.objects.get(patient=current_user)
+        print("Symptoms found:", symptoms)
+
+        # Get the cdsAnalysis data
+        cds_analysis_data = symptoms.cdsAnalysis
+        print("CDS Analysis data:", cds_analysis_data)
+
+        # Create two lists: one for dates and one for cdsAnalysis values
+        dates = [item['timestamp'] for item in cds_analysis_data]
+        cds_analysis_values = [item['value'] for item in cds_analysis_data]
+        print("Dates and values:", dates, cds_analysis_values)
+    
+    except ObjectDoesNotExist :
+        print("No symptoms found for user")
+        # If the user has not been tested, set dates and cds_analysis_values to empty lists
+        dates = []
+        cds_analysis_values = []
+    data = {
+        'dates': json.dumps(dates),
+        'cds_analysis_values': json.dumps(cds_analysis_values),
+        'userName': current_user.username,
+    }
+    print(data)
+
+    # Pass the data to the template
+    return render(request, "overviewContainer.html", data)
 
 def output(request):
     ap = float(request.GET["ap"])
@@ -87,7 +110,35 @@ def run_script(request):
 
 
 def overview(request):
-    return render(request,"overviewContainer.html")
+    current_user = signup.objects.get(email=request.user.email)
+    try:
+        symptoms = Symptoms.objects.get(patient=current_user)
+        print("Symptoms found:", symptoms)
+
+        # Get the cdsAnalysis data
+        cds_analysis_data = symptoms.cdsAnalysis
+        print("CDS Analysis data:", cds_analysis_data)
+
+        # Create two lists: one for dates and one for cdsAnalysis values
+        dates = [item['timestamp'] for item in cds_analysis_data]
+        cds_analysis_values = [item['value'] for item in cds_analysis_data]
+        print("Dates and values:", dates, cds_analysis_values)
+    
+    except ObjectDoesNotExist :
+        print("No symptoms found for user")
+        # If the user has not been tested, set dates and cds_analysis_values to empty lists
+        dates = []
+        cds_analysis_values = []
+    data = {
+        'dates': json.dumps(dates),
+        'cds_analysis_values': json.dumps(cds_analysis_values),
+        'userName': current_user.username,
+    }
+    print(data)
+
+    # Pass the data to the template
+    return render(request, "overviewContainer.html", data)
+    
 
 def product(request): 
     return render(request,"productContainer.html")

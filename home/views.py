@@ -45,6 +45,7 @@ def dashboard(request):
     data = {
         'dates': json.dumps(dates),
         'cds_analysis_values': json.dumps(cds_analysis_values),
+        'userName': current_user.username,
     }
     print(data)
 
@@ -131,6 +132,7 @@ def overview(request):
     data = {
         'dates': json.dumps(dates),
         'cds_analysis_values': json.dumps(cds_analysis_values),
+        'userName': current_user.username,
     }
     print(data)
 

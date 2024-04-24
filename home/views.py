@@ -53,12 +53,12 @@ def dashboard(request):
     return render(request, "overviewContainer.html", data)
 
 def output(request):
-    ap = float(request.GET["ap"])
-    an = float(request.GET["an"])
-    di = float(request.GET["di"])
-    vo = float(request.GET["vo"])
-    we = float(request.GET["we"])
-    bmi = float(request.GET["bmi"])
+    ap = float(request.POST.get("ap"))
+    an = float(request.POST.get("an"))
+    di = float(request.POST.get("di"))
+    vo = float(request.POST.get("vo"))
+    we = float(request.POST.get("we"))
+    bmi = float(request.POST.get("bmi"))
     
     cds.Abdominal_Pain_var = ap
     cds.Anemia_var = an
@@ -85,8 +85,9 @@ def output(request):
     # Save the Symptoms instance back to the database
     symptoms.save()
     
-    return render(request,'result.html',{'res':res})
-
+    # return render(request,'result.html',{'res':res})
+    print(res)
+    return JsonResponse({'result': res})
 def bot(message):
     load_dotenv()
     API_KEY = os.getenv('GEMINI_API_KEY')

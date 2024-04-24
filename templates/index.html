@@ -63,6 +63,16 @@
             text-align: center;
 
         }
+
+        .redirectPage {
+            margin-top: 2em;
+            display: none;
+            background-color: rgb(6, 46, 102);
+            color: yellow;
+            height: 50px;
+            text-align: center;
+
+        }
     </style>
 </head>
 
@@ -177,6 +187,7 @@
         </form>
 
         <div class="result">Getting Your Result </div>
+        <div class="redirectPage"> </div>
     </div>
     <!-- Add this line to your HTML -->
     <div id="overview-url" data-url="{% url 'overview' %}" style="display: none;"></div>
@@ -237,7 +248,7 @@
 
         var form = document.querySelector('#multi-step-form');
         var resultDiv = document.querySelector('.result'); // Assuming you have a div with class 'result'
-
+        var redirectPage = document.querySelector('.redirectPage');
 
         function getCookie(name) {
             let cookieValue = null;
@@ -280,11 +291,28 @@
                     resultDiv.style.display = 'block';
                     resultDiv.textContent = 'The result is: ' + data.result;
 
-                    setTimeout(function () {
-                        let overviewUrl = document.querySelector('#overview-url').dataset.url;
-                        window.location.href = overviewUrl;
-                    }, 2500);
+                    // setTimeout(function () {
+                    //     let overviewUrl = document.querySelector('#overview-url').dataset.url;
+                    //     window.location.href = overviewUrl;
+                    // }, 5000);
 
+                    let countdown = 5.0;
+                    let countdownInterval = setInterval(function () {
+                        countdown -= 0.2;
+                        if (countdown >= 0) {
+                            // Update the result div with the countdown
+                            redirectPage.style.display = 'block';
+                            redirectPage.textContent = 'Redirecting in ' + countdown.toFixed(1) + ' seconds...';
+                            <!-- resultDiv.textContent = 'Redirecting in ' + countdown.toFixed(1) + ' seconds...'; -->
+                        } else {
+                            // Stop the countdown when it reaches 0
+                            clearInterval(countdownInterval);
+
+                            // Redirect to overview.html
+                            let overviewUrl = document.querySelector('#overview-url').dataset.url;
+                            window.location.href = overviewUrl;
+                        }
+                    }, 500);
                 })
                 .catch(error => {
                     console.error('Error:', error);

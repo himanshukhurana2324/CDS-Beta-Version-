@@ -1,49 +1,59 @@
 {% extends 'dashboard.html' %}
 
 {% block content %}
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="/static/settings.css">
+    <style></style>
+
+</head>
 <div class="main--container">
-    <div class="settingscontainer">
+    <div class="section--title">
+        <div class="contentbox">
+            <form id="settingform" action="update" method="post">
+                {% csrf_token %}
+                <h1 class='heading h1'>Personal Info</h1>
+
+                <h2 class="value">Full Name</h2>
+                <input type="text" class="para" value="{{userName}}" name="profileName" pattern="[a-zA-Z\s]+">
+
+                <h2 class="value">Age</h2>
+                <input type="text" class="para" value="{{userAge}}" name="profileAge" pattern="\d+">
 
 
-        <div class="settingsleftbox">
+                <h2 class="value">Gender</h2>
+                <input type="text" class="para" value="{{userGender}}" name="profileGender">
+
+
+                <h2 class="value">Blood Group</h2>
+                <input type="text" class="para" value="{{userBG}}" name="profileBG">
+
+
+                <h2 class="value">State</h2>
+                <input type="text" class="para" value="{{userState}}" name="profileState">
+
+
+                <h2 class="value">Email-ID</h2>
+                <p class="para ">{{userEmail}} </p>
+
+                <button type="submit" id="formSubmitBtn">Save</button>
+
+            </form>
 
         </div>
 
-        <div class="settingsrightbox">
-            <div class="settingsprofile">
-                <form action="update" method="post">
-                    {% csrf_token %}
-                    <h1 class='heading h1'>Personal Info</h1>
 
-                    <h2 class="value">Full Name</h2>
-                    <input type="text" class="para" value="{{userName}}" name="profileName" pattern="[a-zA-Z\s]+">
-
-                    <h2 class="value">Age</h2>
-                    <input type="text" class="para" value="{{userAge}}" name="profileAge" pattern="\d+">
-
-
-                    <h2 class="value">Gender</h2>
-                    <input type="text" class="para" value="{{userGender}}" name="profileGender">
-
-
-                    <h2 class="value">Blood Group</h2>
-                    <input type="text" class="para" value="{{userBG}}" name="profileBG">
-
-
-                    <h2 class="value">State</h2>
-                    <input type="text" class="para" value="{{userState}}" name="profileState">
-
-
-                    <h2 class="value">Email-ID</h2>
-                    <p class="para ">{{userEmail}} </p>
-
-                    <input type="submit" value="Update">
-
-                </form>
-
-            </div>
-        </div>
     </div>
+
+
+
+
+    </body>
+
+</html>
+</div>
 </div>
 
 {% endblock %}

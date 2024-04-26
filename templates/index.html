@@ -5,17 +5,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        #container {
-
-            max-width: 450px;
-
+        body {
+            overflow-x: hidden;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url("/static/What-Is-Gluten.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            font-family: 'Arial', sans-serif;
         }
 
-        .hidden {
-            display: none;
+        .form-card {
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.6);
+            max-width: 600px;
+            width: 90%;
+            margin: auto;
+        }
+
+        .highlight-text {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .form-control-label {
+            margin-bottom: 0;
+            font-size: 1.2em;
+        }
+
+        .input-field {
+            padding: 12px 20px;
+            border-radius: 15px;
+            margin: 10px 0px;
+            box-sizing: border-box;
+            border: 2px solid #3d1500;
+            font-size: 18px;
+            font-weight: 300;
+            transition: all 0.3s ease;
+            background-color: #f8f9fa;
+            position: relative;
+            color: #333;
+        }
+
+        .input-field::placeholder {
+            color: #aaa;
+            font-style: italic;
+            transition: all 0.3s ease;
+            position: absolute;
+            left: 20px;
+        }
+
+        .input-field:focus {
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            border: 1px solid #007bff;
+            outline-width: 0;
+            font-weight: 400;
+        }
+
+        .input-field:focus::placeholder {
+            transform: translateY(-25px);
+            opacity: 0;
+        }
+
+        .next-button,
+        .prev-button,
+        .submit-button {
+            color: rgb(227, 220, 220);
+            border: 2px solid #000000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 70%;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 5px;
+            margin: auto auto 10px auto;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            text-transform: uppercase;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            background: linear-gradient(to right, #007bff, #0056b3);
+        }
+
+        .next-button:hover,
+        .prev-button:hover,
+        .submit-button:hover {
+            box-shadow: 0px 10px 15px rgba(0, 56, 179, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .prev-button {
+            background: linear-gradient(to right, #6c757d, #5a6268);
+        }
+
+        .submit-button {
+            background: linear-gradient(to right, #28a745, #218838);
         }
 
         .step-container {
@@ -37,7 +128,17 @@
             justify-content: center;
             margin-bottom: 10px;
             cursor: pointer;
-            /* Added cursor pointer */
+            transition: all 0.3s ease;
+        }
+
+        .step-circle:hover {
+            transform: scale(1.1);
+            border-color: #0056b3;
+        }
+
+        .step-circle.completed {
+            background-color: #007bff;
+            color: #fff;
         }
 
         .step-line {
@@ -46,151 +147,255 @@
             left: 50px;
             width: calc(100% - 100px);
             height: 2px;
-            background-color: #007bff;
+            background-color: #025e6a;
             z-index: -1;
         }
 
-        #multi-step-form {
-            overflow-x: hidden;
+        .progress-bar {
+            width: 100%;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: height 0.3s ease;
         }
 
-        .result {
-            margin-top: 2em;
-            display: none;
-            background-color: rgb(6, 46, 102);
-            color: yellow;
-            height: 50px;
-            text-align: center;
+        .progress-bar-inner {
+            height: 10px;
+            width: 0.5px;
+            background-color: #007bff;
+            transition: width 0.3s ease;
+        }
 
+        @media only screen and (max-width: 600px) {
+            .form-card {
+                width: 100%;
+                padding: 10px;
+            }
+
+            body {
+                background-size: auto;
+            }
+
+            .next-button,
+            .prev-button,
+            .submit-button {
+                width: 100%;
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            .input-field {
+                font-size: 14px;
+            }
+
+            .progress-bar {
+                height: 15px;
+            }
+
+            .progress-bar-inner {
+                height: 20px;
+            }
+        }
+
+        .resultPage,
+        .redirectPage {
+            display: none;
+            opacity: 0;
+            transition: opacity 15s ease-in-out;
+            /* other styles... */
+        }
+
+
+        .resultPage {
+            display: none;
+            margin: 2em auto 0em auto;
+            width: 100%;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.5s ease-in-out;
+            padding: 20px;
         }
 
         .redirectPage {
-            margin-top: 2em;
             display: none;
-            background-color: rgb(6, 46, 102);
-            color: yellow;
-            height: 50px;
-            text-align: center;
+            margin: 0.0em auto;
+            width: 100%;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.5s ease-in-out;
+            padding: 20px;
+        }
 
+        .resultPage {
+            color: #120000;
+            font-family: 'Raleway', cursive;
+            width: 100%;
+            text-align: center;
+            font-weight: 200;
+            font-stretch: normal;
+            font-size: 1.2em;
+            margin-bottom: 0em;
+            transition: color 0.5s ease-in-out;
+        }
+
+        .redirectHeading {
+            color: #333;
+            font-family: 'Raleway', cursive;
+            width: 100%;
+            text-align: center;
+            font-weight: 300;
+            font-stretch: normal;
+            font-size: 2em;
+            margin-bottom: 0em;
+            transition: color 0.5s ease-in-out;
+        }
+
+        .slider {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .redirectPage {
+                width: 90%;
+
+            }
+
+            .redirectHeading {
+                font-size: 1.1em;
+            }
+        }
+
+        a {
+            color: #4a8df8;
+            font-family: 'Raleway', cursive;
+        }
+
+
+        @media (max-width: 600px) {
+            .slider {
+                height: 1px;
+            }
+
+            .break {
+                height: 1px;
+                width: 1px;
+            }
         }
     </style>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
-    <div id="container" class="container mt-5 ">
-        <div class="progress px-1" style="height: 3px;">
-            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0"
-                aria-valuemax="100"></div>
+    <div class="container-fluid px-1 py-5 mx-auto">
+        <div class="row d-flex justify-content-center">
+            <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+                <h3>Request a Demo</h3>
+                <p class="highlight-text">Just answer a few questions<br> so that we can personalize the right
+                    experience for
+                    you.</p>
+                <div class="form-card">
+                    <div id="form-container" class="container mt-5 ">
+                        <div class="progress px-1" style="height: 3px;">
+                            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="step-container d-flex justify-content-between">
+                            <div class="step-circle" onclick="displayStep(1)">1</div>
+                            <div class="step-circle" onclick="displayStep(2)">2</div>
+                            <div class="step-circle" onclick="displayStep(3)">3</div>
+                            <div class="step-circle" onclick="displayStep(4)">4</div>
+                            <div class="step-circle" onclick="displayStep(5)">5</div>
+                            <div class="step-circle" onclick="displayStep(6)">6</div>
+                        </div>
+
+                        <form id="multi-step-form" method="get">
+
+                            <div class="step step-1">
+                                <h3>Abdominal Pain:</h3>
+                                <div class="mb-3">
+                                    <label for="abdominalPain">Abdominal Pain:</label>
+                                    <input class="input-field" type="number" size="15" id="abdominalPain"
+                                        placeholder="Enter value : 1 to 10" name="ap" class="form-control" />
+                                </div>
+                                <button type="button" class="btn btn-primary next-button">Next</button>
+                            </div>
+
+                            <div class="step step-2">
+                                <h3>Anemia:</h3>
+                                <div class="mb-3">
+                                    <label for="anemia">Anemia:</label>
+                                    <input class="input-field" type="number" size="15" id="anemia"
+                                        placeholder="Enter value : 1 to 10" name="an" class="form-control" />
+                                </div>
+                                <button type="button" class="btn btn-primary prev-button">Previous</button>
+                                <button type="button" class="btn btn-primary next-button">Next</button>
+                            </div>
+
+                            <div class="step step-3">
+                                <h3>Vomiting:</h3>
+                                <div class="mb-3">
+                                    <label for="vomiting">Vomiting:</label>
+                                    <input class="input-field" type="number" size="15" id="vomiting"
+                                        placeholder="Enter value : 1 to 10" name="vo" class="form-control" />
+                                </div>
+                                <button type="button" class="btn btn-primary prev-button">Previous</button>
+                                <button type="button" class="btn btn-primary next-button">Next</button>
+                            </div>
+
+                            <div class="step step-4">
+                                <h3>Diarrhea:</h3>
+                                <div class="mb-3">
+                                    <label for="diarrhea">Diarrhea:</label>
+                                    <input class="input-field" type="number" size="15" id="diarrhea"
+                                        placeholder="Enter value : 1 to 10" name="di" class="form-control" />
+                                </div>
+                                <button type="button" class="btn btn-primary prev-button">Previous</button>
+                                <button type="button" class="btn btn-primary next-button">Next</button>
+                            </div>
+
+                            <div class="step step-5">
+                                <h3>Weight Loss:</h3>
+                                <div class="mb-3">
+                                    <label for="weightLoss">Weight Loss:</label>
+                                    <input class="input-field" type="number" size="15" id="weightLoss"
+                                        placeholder="Enter value : 1 to 10" name="we" class="form-control" />
+                                </div>
+                                <button type="button" class="btn btn-primary prev-button">Previous</button>
+                                <button type="button" class="btn btn-primary next-button">Next</button>
+                            </div>
+
+                            <div class="step step-6">
+                                <h3>BMI:</h3>
+                                <div class="mb-3">
+                                    <label for="bmi">BMI:</label>
+                                    <input class="input-field" type="number" size="15" id="bmi"
+                                        placeholder="Enter value : 1 to 40" name="bmi" class="form-control" />
+                                </div>
+                                <button type="button" class="btn btn-primary prev-button">Previous</button>
+                                <button type="submit" class="btn btn-success submit-button ">Submit</button>
+                            </div>
+                        </form>
+
+                        <div class="resultPage">Getting Your Result </div>
+                        <br><br><br>
+                        <div class="redirectPage">
+                            <h1 class="redirectHeading">Redirecting in 5 seconds...</h1>
+
+                        </div>
+                    </div>
+                    <div id="overview-url" data-url="{% url 'overview' %}" style="display: none;"></div>
+                </div>
+            </div>
         </div>
-        <div class="step-container d-flex justify-content-between">
-            <div class="step-circle" onclick="displayStep(1)">1</div>
-            <div class="step-circle" onclick="displayStep(2)">2</div>
-            <div class="step-circle" onclick="displayStep(3)">3</div>
-            <div class="step-circle" onclick="displayStep(4)">4</div>
-            <div class="step-circle" onclick="displayStep(5)">5</div>
-            <div class="step-circle" onclick="displayStep(6)">6</div>
-        </div>
-
-        <form id="multi-step-form" method="get">
-
-            <div class="step step-1">
-
-                <!-- Step 1 form fields here -->
-
-
-                <h3>Abdominal Pain:</h3>
-                <div class="mb-3">
-                    <!-- <label for="field1" class="form-label">Field 1:</label>
-                    <input type="text" class="form-control" id="field1" name="field1"> -->
-
-                    <label for="abdominalPain">Abdominal Pain:</label>
-                    <input type="number" size="15" id="abdominalPain" placeholder="Enter value : 1 to 10" name="ap"
-                        class="form-control" />
-                </div>
-                <button type="button" class="btn btn-primary next-step">Next</button>
-            </div>
-
-            <div class="step step-2">
-                <!-- Step 2 form fields here -->
-                <h3>Vomiting:</h3>
-                <div class="mb-3">
-                    <!-- <label for="field2" class="form-label">Field 2:</label>
-                    <input type="text" class="form-control" id="field2" name="field2"> -->
-
-                    <label for="anemia">Anemia:</label>
-                    <input type="number" size="15" id="anemia" placeholder="Enter value : 1 to 10" name="an"
-                        class="form-control" />
-                </div>
-                <button type="button" class="btn btn-primary prev-step">Previous</button>
-                <button type="button" class="btn btn-primary next-step">Next</button>
-            </div>
-            <div class="step step-3">
-                <!-- Step 2 form fields here -->
-                <h3>Vomiting:</h3>
-                <div class="mb-3">
-
-                    <!-- <label for="field3" class="form-label">Field 3:</label>
-                    <input type="text" class="form-control" id="field2" name="field2"> -->
-                    <label for="vomiting">Vomiting:</label>
-                    <input type="number" size="15" id="vomiting" placeholder="Enter value : 1 to 10" name="vo"
-                        class="form-control" />
-                </div>
-                <button type="button" class="btn btn-primary prev-step">Previous</button>
-                <button type="button" class="btn btn-primary next-step">Next</button>
-            </div>
-            <div class="step step-4">
-                <!-- Step 2 form fields here -->
-                <h3>Diarrhea:</h3>
-                <div class="mb-3">
-                    <!-- <label for="field4" class="form-label">Field 4:</label>
-                    <input type="text" class="form-control" id="field2" name="field2"> -->
-
-                    <label for="diarrhea">Diarrhea:</label>
-                    <input type="number" size="15" id="diarrhea" placeholder="Enter value : 1 to 10" name="di"
-                        class="form-control" />
-                </div>
-
-                <button type="button" class="btn btn-primary prev-step">Previous</button>
-                <button type="button" class="btn btn-primary next-step">Next</button>
-
-            </div>
-
-
-            <div class="step step-5">
-                <!-- Step 3 form fields here -->
-                <h3>Weight Loss:</h3>
-                <div class="mb-3">
-                    <!-- <label for="field5" class="form-label">Field 5:</label>
-                    <input type="text" class="form-control" id="field3" name="field3"> -->
-
-                    <label for="weightLoss">Weight Loss:</label>
-                    <input type="number" size="15" id="weightLoss" placeholder="Enter value : 1 to 10" name="we"
-                        class="form-control" />
-                </div>
-                <button type="button" class="btn btn-primary prev-step">Previous</button>
-                <button type="button" class="btn btn-primary next-step">Next</button>
-            </div>
-            <div class="step step-6">
-                <!-- Step 3 form fields here -->
-                <h3>BMI:</h3>
-                <div class="mb-3">
-                    <!-- <label for="field6" class="form-label">Field 6:</label>
-                    <input type="text" class="form-control" id="field6" name="field3"> -->
-
-                    <label for="bmi">BMI:</label>
-                    <input type="number" size="15" id="bmi" placeholder="Enter value : 1 to 40" name="bmi"
-                        class="form-control" />
-                </div>
-                <button type="button" class="btn btn-primary prev-step">Previous</button>
-                <button type="submit" class="btn btn-success">Submit</button>
-            </div>
-        </form>
-
-        <div class="result">Getting Your Result </div>
-        <div class="redirectPage"> </div>
     </div>
-    <!-- Add this line to your HTML -->
-    <div id="overview-url" data-url="{% url 'overview' %}" style="display: none;"></div>
 </body>
 <script>
 
@@ -212,7 +417,7 @@
             steps[i].style.display = 'none';
         }
 
-        var nextButtons = document.querySelectorAll(".next-step");
+        var nextButtons = document.querySelectorAll(".next-button");
         nextButtons.forEach(function (button) {
             button.addEventListener('click', function () {
                 if (currentStep < 6) {
@@ -224,7 +429,7 @@
             });
         });
 
-        var prevButtons = document.querySelectorAll(".prev-step");
+        var prevButtons = document.querySelectorAll(".prev-button");
         prevButtons.forEach(function (button) {
             button.addEventListener('click', function () {
                 if (currentStep > 1) {
@@ -247,8 +452,9 @@
         // ... your existing code ...
 
         var form = document.querySelector('#multi-step-form');
-        var resultDiv = document.querySelector('.result'); // Assuming you have a div with class 'result'
+        var resultDiv = document.querySelector('.resultPage'); // Assuming you have a div with class 'result'
         var redirectPage = document.querySelector('.redirectPage');
+        var redirectHeading = document.querySelector('.redirectHeading');
 
         function getCookie(name) {
             let cookieValue = null;
@@ -289,6 +495,9 @@
                 .then(data => {
                     // Show the result div and display the result
                     resultDiv.style.display = 'block';
+                    setTimeout(function () {
+                        resultDiv.style.opacity = '1';
+                    }, 50);
                     resultDiv.textContent = 'The result is: ' + data.result;
 
                     // setTimeout(function () {
@@ -296,14 +505,18 @@
                     //     window.location.href = overviewUrl;
                     // }, 5000);
 
-                    let countdown = 5.0;
+                    let countdown = 10;
                     let countdownInterval = setInterval(function () {
-                        countdown -= 0.2;
+                        countdown -= 1;
                         if (countdown >= 0) {
                             // Update the result div with the countdown
                             redirectPage.style.display = 'block';
-                            redirectPage.textContent = 'Redirecting in ' + countdown.toFixed(1) + ' seconds...';
-                            <!-- resultDiv.textContent = 'Redirecting in ' + countdown.toFixed(1) + ' seconds...'; -->
+                            setTimeout(function () {
+                                redirectPage.style.opacity = '1';
+                            }, 50);
+
+                            redirectHeading.textContent = 'Getting Back ' + countdown.toFixed(1) + ' seconds...';
+
                         } else {
                             // Stop the countdown when it reaches 0
                             clearInterval(countdownInterval);

@@ -2,278 +2,273 @@
 
 {% block content %}
 
-<div class="main--container">
-  <div class="section--title">
+<head>
 
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f4f6;
+      transition: background-color 0.5s ease;
+    }
 
-    <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery/2.2.1/jquery.min.js"></script>
+    .faq-section {
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
 
+    .faq-section:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
+    }
 
-    <style type="text/css">
-      .faq {
-        text-align: center;
-        justify-content: center;
-        padding: 20px;
-        width: 80%;
-      }
-
-      .faq-icon {
-        height: 18px;
-        width: 18px;
-        margin-top: 3px;
-      }
-
-      .accordion {
-        background-color: khaki;
-        color: #282A35;
-        cursor: pointer;
+    @media (max-width: 600px) {
+      .faq-section header {
         padding: 18px;
-        width: 100%;
-        text-align: left;
-        border: none;
-        border-radius: 10px;
-        outline: none;
-        transition: 0.4s;
       }
 
-      .active,
-      .accordion:hover {
-        background-color: yellow;
-        color: #282A35;
-      }
-
-      .active {
-        border-radius: 10px 10px 0px 0px;
-      }
-
-      .details-description {
-        font-size: 22px;
-        margin-top: 20px
-      }
-
-      .panel {
-        padding: 0 10px;
-        padding-left: 40px;
-        padding-right: 40px;
-        background-color: #f3ecea;
-        margin-top: -28px;
-        color: #282A35;
-        display: none;
-        overflow: hidden;
-        border-radius: 0px 0px 10px 10px;
-        text-align: left;
-      }
-
-      .panel,
-      .accordion {
-        margin-bottom: 2rem;
-      }
-
-      button.accordion {
-        font-weight: bold;
+      .faq-section header>p {
         font-size: 16px;
       }
 
-      .paragraphs {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        white-space: pre-wrap;
+      .faq-section h2 {
+        font-size: 30px;
       }
-    </style>
 
-    <div class="w3-center w3-animate-zoom" style="margin-top: -1px;">
-      <div class="w3-center w3-content">
-        <div class="faq w3-center w3-content" style="padding-left: 400px;">
-          <h2 class="accordion" style="color: #000000;"><b>Frequently Asked Questions</b></h2><br>
-          <button class="accordion" style="display: flex; flex-direction: row;"><img class="faq-icon"
-              src="https://cdn.jsdelivr.net/gh/linuxguist/faqa@main/chevron-down.svg"> &nbsp; &nbsp; <b
-              style="padding-top: 2px;">What is an FAQ page?</b></button>
-          <div class="panel" style="display: none;">
-            <div class="paragraphs" id="myDiv_id1"></div>
-            <p id="paragraph_id1" style="display: none;">Frequently Asked Questions (FAQ) pages contain a list of
-              commonly asked questions and answers on a website about topics such as hours, shipping and handling,
-              product information, and return policies.
+      .faq-section summary {
+        font-size: 16px;
+      }
 
-              Sure there are chatbots, support lines, and customer reviews to help shoppers on their path to purchase,
-              but there’s one forgotten customer service tactic that is cost-effective and streamlined. That tactic is
-              an FAQ page.
-            </p>
-          </div>
-          <button class="accordion" style="display: flex; flex-direction: row;"><img class="faq-icon"
-              src="https://cdn.jsdelivr.net/gh/linuxguist/faqa@main/chevron-down.svg"> &nbsp; &nbsp; <b
-              style="padding-top: 2px;">Why you should make an FAQ page?</b></button>
-          <div class="panel" style="display: none;">
-            <div class="paragraphs" id="myDiv_id2"></div>
-            <p id="paragraph_id2" style="display: none;">An FAQ page is a time-saving customer service tactic that
-              provides the most commonly asked questions and answers for current or potential customers.
+      .faq-section h4 {
+        padding: 10px 15px;
+      }
 
-              Before diving into how to make an FAQ page, you need to know why having one is so important. There are so
-              many reasons beyond improving the customer experience for perfecting your FAQ page. Keep in mind the
-              importance of an FAQ page when developing your own e-commerce website so you can make sure it increases
-              sales and not the other way around.
-            </p>
-          </div>
-          <button class="accordion" style="display: flex; flex-direction: row;"><img class="faq-icon"
-              src="https://cdn.jsdelivr.net/gh/linuxguist/faqa@main/chevron-down.svg"> &nbsp; &nbsp; <b
-              style="padding-top: 2px;">How to make an FAQ page?</b></button>
-          <div class="panel" style="display: none;">
-            <div class="paragraphs" id="myDiv_id3"></div>
-            <p id="paragraph_id3" style="display: none;">There are seven simple steps to make the perfect FAQ page for
-              your business. The design of an FAQ page is crucial for an easy-to-use customer experience. Follow these
-              steps and your customer success team will thank you.
+      .faq-section details>p {
+        font-size: 15px;
+        padding: 0 15px 10px;
+      }
+    }
 
-              1. Determine the questions
-              2. Categorize the questions
-              3. Highlight or link the most popular questions
-              4. Include a search bar
-              5. Align with your brand look and feel
-              6. Update regularly
-              7. Track and improve
-            </p>
-          </div>
-          <button class="accordion" style="display: flex; flex-direction: row;"><img class="faq-icon"
-              src="https://cdn.jsdelivr.net/gh/linuxguist/faqa@main/chevron-down.svg"> &nbsp; &nbsp; <b
-              style="padding-top: 2px;">What are the most frequently asked questions?</b></button>
-          <div class="panel" style="display: none;">
-            <div class="paragraphs" id="myDiv_id4"></div>
-            <p id="paragraph_id4" style="display: none;">A good FAQ is general enough to address many issues. There are
-              questions that just about every company answers on their FAQ page, so if you’re struggling to get started
-              use these as your starting point. If they’re relevant to your company, of course.
+    @media (max-width: 800px) {
+      .faq-section {
+        max-width: 90%;
+        max-height: fit-content;
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+      }
 
-              1. What is the return policy?
-              2. What are the shipping options?
-              3. What do I do if I never received my order?
-              4. When will I receive my order?
-              5. How do I make sure I order the right size?
-              6. Where are you located?
-              7. Can I make changes to an order I already placed?
-              8. How do I get a new password?
-            </p>
+      .faq-section:hover {
+        transform: none;
+      }
+    }
 
-            <script>
-              var acc = document.getElementsByClassName("accordion");
-              var i;
-              for (i = 0; i < acc.length; i++) {
-                acc[i].addEventListener("click", function () {
-                  this.classList.toggle("active");
-                  var panel = this.nextElementSibling;
-                  if (panel.style.display === "block") {
-                    panel.style.display = "none";
-                    // clearBox('myDiv_id1')
-                  } else {
-                    panel.style.display = "block";
-                    var firstElementChild = panel.children[0].id;
-                    var secondElementChild = panel.children[1].id;
-                    // console.log(firstElementChild);
-                    // console.log(secondElementChild);
+    .faq-section summary {
+      font-size: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: font-size 0.3s ease, background-color 0.3s ease;
+    }
 
-                    var text = document.getElementById(secondElementChild).innerHTML;
+    .faq-section summary:hover {
+      background-color: #f0f0f0;
+    }
 
-                    responsiveVoice.speak(text, 'UK English Female', parameters);
-                    printStringByLetter(secondElementChild, firstElementChild);
-
-                    // console.log(text); 
-
-                    // alert('i am here');
+    .faq-section:hover summary {
+      font-size: 20px;
+    }
 
 
+    .faq-section header {
+      padding: 40px;
+      background: linear-gradient(135deg, #20a891 0%, #11d7af 50%, #05a4a6 100%);
+      background-size: 200% 200%;
+      animation: Gradient 3s ease infinite;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      color: #fff;
+      border-radius: 10px;
+    }
 
-                  }
-                });
-              }
-              var images = document.querySelectorAll(".faq-icon");
-              images.forEach(function (image) {
-                image.addEventListener("click", changeImage);
-              });
+    @keyframes Gradient {
+      0% {
+        background-position: 0% 50%;
+      }
 
-              function changeImage() {
-                if (this.src.match("chevron-down")) {
-                  this.src = "https://cdn.jsdelivr.net/gh/linuxguist/faqa@main/chevron-up.svg";
-                } else {
-                  this.src = "https://cdn.jsdelivr.net/gh/linuxguist/faqa@main/chevron-down.svg";
-                }
-              }
-            </script>
+      50% {
+        background-position: 100% 50%;
+      }
 
-            <script type="text/javascript">
+      100% {
+        background-position: 0% 50%;
+      }
+    }
 
-              function printStringByLetter(paragraph_id, myDiv_id) {
-                var myDiv = document.getElementById(myDiv_id);
-                var text = document.getElementById(paragraph_id).innerHTML;
-                // myDiv.innerHTML = "";
-                document.getElementById(myDiv_id).innerHTML = "";
-                // console.log(text.length);
-                var index = 0;
-                var intervalId = setInterval(function () {
-                  myDiv.innerHTML += text.charAt(index);
-                  index++;
-                  // console.log(index);
-                  if (index == text.length) {
-                    clearInterval(intervalId);
-                    index = 0;
-                    text = "";
-                  }
-                }, 50);
-              }
+    .faq-section header>p {
+      font-size: 20px;
+      opacity: 0.9;
+      transition: font-size 0.5s ease;
+    }
 
-              function clearBox(elementID) {
-                document.getElementById(elementID).innerHTML = "";
-              }
+    .faq-section:hover header>p {
+      font-size: 24px;
+    }
 
-            </script>
+    .faq-section h2 {
+      font-size: 42px;
+      margin-top: 0;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: font-size 0.5s ease;
+    }
 
-            <center><a href="https://responsivevoice.org" title="ResponsiveVoice">
-                <h4 style="background-color:white">Powered By ResponsiveVoice Text-To-Speech For Non-commercial personal
-                  or non-profit project</h4>
-              </a></center>
+    .faq-section:hover h2 {
+      font-size: 44px;
+    }
 
-            <div id="text1" style="font-family: sans-serif, serif; font-size: 18px; display:none">
+    details {
+      cursor: pointer;
+      border-bottom: 1px solid #ddd;
+      transition: padding 0.5s ease;
+    }
 
-              <p>Here are some of the most common types of gardens:</p>
+    details[open] {
+      padding: 20px 0;
+    }
 
-            </div>
+    summary:focus-visible {
+      outline: 2px solid orange;
+      outline-offset: 8px;
+      border-radius: 4px;
+    }
 
+    .faq-section h4 {
+      color: #333;
+      margin: 0;
+      padding: 15px 25px;
+      transition: padding 0.5s ease;
+    }
 
+    .faq-section:hover h4 {
+      padding: 20px 30px;
+    }
 
-            <script>
+    .faq-section summary {
+      font-size: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: font-size 0.5s ease;
+    }
 
-              function voiceStartCallback() {
-                console.log("Voice started");
-              }
+    .faq-section:hover summary {
+      font-size: 22px;
+    }
 
-              function voiceEndCallback() {
-                console.log("Voice ended");
-              }
+    summary::marker {
+      display: none;
+    }
 
-              var parameters = {
-                onstart: voiceStartCallback,
-                onend: voiceEndCallback,
-                rate: 0.95
-              }
+    span {
+      color: #333;
+      transition: transform 0.5s ease;
+    }
 
-            </script>
+    details[open] span {
+      transform: rotate(180deg);
+    }
 
+    .faq-section details>p {
+      color: #666;
+      font-size: 18px;
+      line-height: 155%;
+      letter-spacing: .1px;
+      padding: 0 25px 15px;
+      margin: 0;
+      transition: font-size 0.5s ease, padding 0.5s ease;
+    }
 
-            <script type="text/javascript">
+    .faq-section:hover details>p {
+      font-size: 20px;
+      padding: 10px 30px 25px;
+    }
 
-              /*
-              
-              responsiveVoice.speak("Hello, this is a test using callbacks","UK English Female", parameters);
-              
-              responsiveVoice.speak("hello world", "UK English Male", {pitch: 2});
-              
-              responsiveVoice.speak("hello world", "UK English Male", {rate: 1.5});
-              
-              responsiveVoice.speak("hello world", "UK English Male", {volume: 1});
-              
-              */
+    hr {
+      display: none;
+    }
+  </style>
+</head>
 
-            </script>
+<div class="main--container">
+  <div class="faq-section">
+    <header>
+      <h2>FAQs</h2>
+      <p>Answers to the most frequently asked questions.</p>
+    </header>
 
+    <details>
+      <summary>
+        <h4>Why is Raycast free for personal use?</h4>
+        <span class="material-symbols-outlined">expand_more</span>
+      </summary>
+      <p>We think of Raycast as a productivity layer that everybody should use to get work done faster. To make it
+        accessible, we don't charge for the individual plan. The plan covers all built-in extensions, such as Clipboard
+        History, Calendar or Window Management and provides access to all public extensions built by our community.</p>
+    </details>
 
-          </div>
-        </div>
+    <hr>
 
-        {% endblock %}
+    <details>
+      <summary>
+        <h4>When is Raycast for teams available?</h4>
+        <span class="material-symbols-outlined">expand_more</span>
+      </summary>
+      <p>We don't have an exact date right now, but we will launch Raycast for Teams in 2022. You can sign up to get
+        early
+        access above, and be the first to hear when we're launching it.</p>
+    </details>
+
+    <hr>
+
+    <details>
+      <summary>
+        <h4>How many seats do I get in a Team plan?</h4>
+        <span class="material-symbols-outlined">expand_more</span>
+      </summary>
+      <p>We don't have an exact date right now, but we will launch Raycast for Teams in 2022. You can sign up to get
+        early
+        access above, and be the first to hear when we're launching it.</p>
+    </details>
+
+    <hr>
+
+    <details>
+      <summary>
+        <h4>Can I have personal Extensions and Team Extensions?</h4>
+        <span class="material-symbols-outlined">expand_more</span>
+      </summary>
+      <p>Yes, you can create personal Extensions that are personalized to you, and speed up your productivity, and have
+        team Extensions that can be shared around in your organization for everyone to use. Team Extensions will be
+        available in the Store command, behind a filter for your Team. This is where all of your Team Extensions will
+        live, and where you can install them.</p>
+    </details>
+
+    <hr>
+
+    <details>
+      <summary>
+        <h4>How much will Team features cost?</h4>
+        <span class="material-symbols-outlined">expand_more</span>
+      </summary>
+      <p>Team features will cost $10 per user, per month.</p>
+    </details>
+
+  </div>
+</div>
+
+{% endblock %}

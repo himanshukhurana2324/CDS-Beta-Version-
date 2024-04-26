@@ -22,16 +22,22 @@
 
         .form-card {
             padding: 30px;
-            border-radius: 30px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 24px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            background-color: rgba(248, 157, 111, 0.5);
             max-width: 600px;
             width: 90%;
             margin: auto;
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .form-card:hover {
+            box-shadow: 0px 15px 30px rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
         }
 
         .highlight-text {
-            color: #007bff;
+            color: #854204;
             font-weight: bold;
         }
 
@@ -45,7 +51,8 @@
             border-radius: 15px;
             margin: 10px 0px;
             box-sizing: border-box;
-            border: 2px solid #3d1500;
+            border: 2px solid rgba(227, 165, 102, 0.8);
+            /* Match border color with .form-card background color */
             font-size: 18px;
             font-weight: 300;
             transition: all 0.3s ease;
@@ -55,7 +62,7 @@
         }
 
         .input-field::placeholder {
-            color: #aaa;
+            color: #8c4712;
             font-style: italic;
             transition: all 0.3s ease;
             position: absolute;
@@ -63,8 +70,8 @@
         }
 
         .input-field:focus {
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-            border: 1px solid #007bff;
+            box-shadow: 0 0 5px rgba(252, 251, 251, 0.5);
+            border: 1px solid #f0f4f8;
             outline-width: 0;
             font-weight: 400;
         }
@@ -77,36 +84,31 @@
         .next-button,
         .prev-button,
         .submit-button {
-            color: rgb(227, 220, 220);
-            border: 2px solid #000000;
+            color: #3d2b0b;
+            /* Darker text color for better contrast */
+            border: 2px solid rgba(227, 165, 102, 0.8);
+            /* Match border color with .form-card background color */
             cursor: pointer;
-            transition: all 0.3s ease;
-            width: 70%;
-            padding: 15px;
-            font-size: 18px;
-            border-radius: 5px;
-            margin: auto auto 10px auto;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-            text-transform: uppercase;
-            font-weight: bold;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 700;
-            background: linear-gradient(to right, #007bff, #0056b3);
+            /* ...existing styles... */
+            background: linear-gradient(to right, rgba(227, 165, 102, 0.8), rgba(234, 162, 75, 0.8));
+            /* Use a similar color scheme as .formHeading */
         }
 
         .next-button:hover,
         .prev-button:hover,
         .submit-button:hover {
-            box-shadow: 0px 10px 15px rgba(0, 56, 179, 0.2);
+            box-shadow: 0px 10px 15px rgba(241, 175, 109, 0.2);
             transform: translateY(-2px);
         }
 
         .prev-button {
-            background: linear-gradient(to right, #6c757d, #5a6268);
+            background: linear-gradient(to right, rgba(227, 165, 102, 0.8), rgba(234, 162, 75, 0.8));
+            /* Use a similar color scheme as .formHeading */
         }
 
         .submit-button {
-            background: linear-gradient(to right, #28a745, #218838);
+            background: linear-gradient(to right, rgba(227, 165, 102, 0.8), rgba(234, 162, 75, 0.8));
+            /* Use a similar color scheme as .formHeading */
         }
 
         .step-container {
@@ -120,7 +122,8 @@
             height: 30px;
             border-radius: 50%;
             background-color: #fff;
-            border: 2px solid #007bff;
+            border: 2px solid rgba(227, 165, 102, 0.8);
+            /* Match border color with .form-card background color */
             line-height: 30px;
             font-weight: bold;
             display: flex;
@@ -133,11 +136,11 @@
 
         .step-circle:hover {
             transform: scale(1.1);
-            border-color: #0056b3;
+            border-color: #482502;
         }
 
         .step-circle.completed {
-            background-color: #007bff;
+            background-color: #893605;
             color: #fff;
         }
 
@@ -147,7 +150,7 @@
             left: 50px;
             width: calc(100% - 100px);
             height: 2px;
-            background-color: #025e6a;
+            background-color: #d05d05a5;
             z-index: -1;
         }
 
@@ -162,7 +165,7 @@
         .progress-bar-inner {
             height: 10px;
             width: 0.5px;
-            background-color: #007bff;
+            background-color: #f84a00b6;
             transition: width 0.3s ease;
         }
 
@@ -201,7 +204,7 @@
         .redirectPage {
             display: none;
             opacity: 0;
-            transition: opacity 15s ease-in-out;
+            transition: opacity 5s ease-in-out;
             /* other styles... */
         }
 
@@ -215,7 +218,7 @@
             border-radius: 20px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             transition: opacity 0.5s ease-in-out;
-            padding: 20px;
+            padding: 15px;
         }
 
         .redirectPage {
@@ -227,7 +230,7 @@
             border-radius: 20px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             transition: opacity 0.5s ease-in-out;
-            padding: 20px;
+            padding: 15px;
         }
 
         .resultPage {
@@ -249,7 +252,7 @@
             text-align: center;
             font-weight: 300;
             font-stretch: normal;
-            font-size: 2em;
+            font-size: 1.6em;
             margin-bottom: 0em;
             transition: color 0.5s ease-in-out;
         }
@@ -287,6 +290,52 @@
                 width: 1px;
             }
         }
+
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+        .formHeading {
+            color: #3d2b0b;
+            /* Darker text color for better contrast */
+            font-family: 'Montserrat', Arial, sans-serif;
+            text-align: center;
+            font-weight: 700;
+            font-size: 2.1em;
+            margin-bottom: 1em;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(227, 165, 102, 0.8) 0%, rgba(234, 162, 75, 1) 100%);
+            /* Less transparent background for better contrast */
+            border-radius: 24px;
+            border: 1px solid #f2c788;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .formHeading:hover {
+            box-shadow: 0px 15px 30px rgba(241, 175, 109, 0.3);
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .formHeading {
+                font-size: 80%;
+                /* Adjust font size for medium screens */
+            }
+        }
+
+        /* Adjust styles for small screens */
+        @media (max-width: 480px) {
+            .formHeading {
+                font-size: 120%;
+                /* Adjust font size for small screens */
+                padding: 2vw;
+                /* Reduce padding for small screens */
+            }
+        }
+
+
+        #fnext {
+            visibility: hidden;
+        }
     </style>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -297,102 +346,102 @@
     <div class="container-fluid px-1 py-5 mx-auto">
         <div class="row d-flex justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
-                <h3>Request a Demo</h3>
-                <p class="highlight-text">Just answer a few questions<br> so that we can personalize the right
-                    experience for
-                    you.</p>
-                <div class="form-card">
-                    <div id="form-container" class="container mt-5 ">
-                        <div class="progress px-1" style="height: 3px;">
-                            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
-                                aria-valuemin="0" aria-valuemax="100"></div>
+                <h2 class="formHeading">Answer a Few Questions to Determine Your CDS Status</h3>
+
+                    <div class="form-card">
+                        <div id="form-container" class="container mt-5 ">
+                            <div class="progress px-1" style="height: 3px;">
+                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="step-container d-flex justify-content-between">
+                                <div class="step-circle" onclick="displayStep(1)">1</div>
+                                <div class="step-circle" onclick="displayStep(2)">2</div>
+                                <div class="step-circle" onclick="displayStep(3)">3</div>
+                                <div class="step-circle" onclick="displayStep(4)">4</div>
+                                <div class="step-circle" onclick="displayStep(5)">5</div>
+                                <div class="step-circle" onclick="displayStep(6)">6</div>
+                            </div>
+
+                            <form id="multi-step-form" method="get">
+
+                                <div class="step step-1">
+                                    <h3>Abdominal Pain:</h3>
+                                    <div class="mb-3">
+                                        <label for="abdominalPain">Abdominal Pain:</label>
+                                        <input class="input-field" type="number" size="15" id="abdominalPain"
+                                            placeholder="Enter value : 1 to 10" name="ap" class="form-control" />
+                                    </div>
+                                    <button type="button" class="btn btn-primary next-button">Next</button>
+                                    <button type="button" class="btn btn-primary next-button " disabled
+                                        id="fnext">Next</button>
+                                </div>
+
+                                <div class="step step-2">
+                                    <h3>Anemia:</h3>
+                                    <div class="mb-3">
+                                        <label for="anemia">Anemia:</label>
+                                        <input class="input-field" type="number" size="15" id="anemia"
+                                            placeholder="Enter value : 1 to 10" name="an" class="form-control" />
+                                    </div>
+                                    <button type="button" class="btn btn-primary prev-button">Previous</button>
+                                    <button type="button" class="btn btn-primary next-button">Next</button>
+                                </div>
+
+                                <div class="step step-3">
+                                    <h3>Vomiting:</h3>
+                                    <div class="mb-3">
+                                        <label for="vomiting">Vomiting:</label>
+                                        <input class="input-field" type="number" size="15" id="vomiting"
+                                            placeholder="Enter value : 1 to 10" name="vo" class="form-control" />
+                                    </div>
+                                    <button type="button" class="btn btn-primary prev-button">Previous</button>
+                                    <button type="button" class="btn btn-primary next-button">Next</button>
+                                </div>
+
+                                <div class="step step-4">
+                                    <h3>Diarrhea:</h3>
+                                    <div class="mb-3">
+                                        <label for="diarrhea">Diarrhea:</label>
+                                        <input class="input-field" type="number" size="15" id="diarrhea"
+                                            placeholder="Enter value : 1 to 10" name="di" class="form-control" />
+                                    </div>
+                                    <button type="button" class="btn btn-primary prev-button">Previous</button>
+                                    <button type="button" class="btn btn-primary next-button">Next</button>
+                                </div>
+
+                                <div class="step step-5">
+                                    <h3>Weight Loss:</h3>
+                                    <div class="mb-3">
+                                        <label for="weightLoss">Weight Loss:</label>
+                                        <input class="input-field" type="number" size="15" id="weightLoss"
+                                            placeholder="Enter value : 1 to 10" name="we" class="form-control" />
+                                    </div>
+                                    <button type="button" class="btn btn-primary prev-button">Previous</button>
+                                    <button type="button" class="btn btn-primary next-button">Next</button>
+                                </div>
+
+                                <div class="step step-6">
+                                    <h3>BMI:</h3>
+                                    <div class="mb-3">
+                                        <label for="bmi">BMI:</label>
+                                        <input class="input-field" type="number" size="15" id="bmi"
+                                            placeholder="Enter value : 1 to 40" name="bmi" class="form-control" />
+                                    </div>
+                                    <button type="button" class="btn btn-primary prev-button">Previous</button>
+                                    <button type="submit" class="btn btn-success submit-button ">Submit</button>
+                                </div>
+                            </form>
+
+                            <div class="resultPage">Getting Your Result </div>
+                            <br><br><br>
+                            <div class="redirectPage">
+                                <h1 class="redirectHeading">Redirecting in 5 seconds...</h1>
+
+                            </div>
                         </div>
-                        <div class="step-container d-flex justify-content-between">
-                            <div class="step-circle" onclick="displayStep(1)">1</div>
-                            <div class="step-circle" onclick="displayStep(2)">2</div>
-                            <div class="step-circle" onclick="displayStep(3)">3</div>
-                            <div class="step-circle" onclick="displayStep(4)">4</div>
-                            <div class="step-circle" onclick="displayStep(5)">5</div>
-                            <div class="step-circle" onclick="displayStep(6)">6</div>
-                        </div>
-
-                        <form id="multi-step-form" method="get">
-
-                            <div class="step step-1">
-                                <h3>Abdominal Pain:</h3>
-                                <div class="mb-3">
-                                    <label for="abdominalPain">Abdominal Pain:</label>
-                                    <input class="input-field" type="number" size="15" id="abdominalPain"
-                                        placeholder="Enter value : 1 to 10" name="ap" class="form-control" />
-                                </div>
-                                <button type="button" class="btn btn-primary next-button">Next</button>
-                            </div>
-
-                            <div class="step step-2">
-                                <h3>Anemia:</h3>
-                                <div class="mb-3">
-                                    <label for="anemia">Anemia:</label>
-                                    <input class="input-field" type="number" size="15" id="anemia"
-                                        placeholder="Enter value : 1 to 10" name="an" class="form-control" />
-                                </div>
-                                <button type="button" class="btn btn-primary prev-button">Previous</button>
-                                <button type="button" class="btn btn-primary next-button">Next</button>
-                            </div>
-
-                            <div class="step step-3">
-                                <h3>Vomiting:</h3>
-                                <div class="mb-3">
-                                    <label for="vomiting">Vomiting:</label>
-                                    <input class="input-field" type="number" size="15" id="vomiting"
-                                        placeholder="Enter value : 1 to 10" name="vo" class="form-control" />
-                                </div>
-                                <button type="button" class="btn btn-primary prev-button">Previous</button>
-                                <button type="button" class="btn btn-primary next-button">Next</button>
-                            </div>
-
-                            <div class="step step-4">
-                                <h3>Diarrhea:</h3>
-                                <div class="mb-3">
-                                    <label for="diarrhea">Diarrhea:</label>
-                                    <input class="input-field" type="number" size="15" id="diarrhea"
-                                        placeholder="Enter value : 1 to 10" name="di" class="form-control" />
-                                </div>
-                                <button type="button" class="btn btn-primary prev-button">Previous</button>
-                                <button type="button" class="btn btn-primary next-button">Next</button>
-                            </div>
-
-                            <div class="step step-5">
-                                <h3>Weight Loss:</h3>
-                                <div class="mb-3">
-                                    <label for="weightLoss">Weight Loss:</label>
-                                    <input class="input-field" type="number" size="15" id="weightLoss"
-                                        placeholder="Enter value : 1 to 10" name="we" class="form-control" />
-                                </div>
-                                <button type="button" class="btn btn-primary prev-button">Previous</button>
-                                <button type="button" class="btn btn-primary next-button">Next</button>
-                            </div>
-
-                            <div class="step step-6">
-                                <h3>BMI:</h3>
-                                <div class="mb-3">
-                                    <label for="bmi">BMI:</label>
-                                    <input class="input-field" type="number" size="15" id="bmi"
-                                        placeholder="Enter value : 1 to 40" name="bmi" class="form-control" />
-                                </div>
-                                <button type="button" class="btn btn-primary prev-button">Previous</button>
-                                <button type="submit" class="btn btn-success submit-button ">Submit</button>
-                            </div>
-                        </form>
-
-                        <div class="resultPage">Getting Your Result </div>
-                        <br><br><br>
-                        <div class="redirectPage">
-                            <h1 class="redirectHeading">Redirecting in 5 seconds...</h1>
-
-                        </div>
+                        <div id="overview-url" data-url="{% url 'overview' %}" style="display: none;"></div>
                     </div>
-                    <div id="overview-url" data-url="{% url 'overview' %}" style="display: none;"></div>
-                </div>
             </div>
         </div>
     </div>

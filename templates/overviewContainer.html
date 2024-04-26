@@ -36,12 +36,12 @@
 <div class="main--container">
     <div class="section--title">
         <h3 class="title">Welcome back,{{userName}}</h3>
-        <select name="date" id="date">
+        <!-- <select name="date" id="date">
             <option value="last7">Last 7 days</option>
             <option value="lastmonth">Last month</option>
             <option value="lastyear">Last year</option>
             <option value="alltime">All time</option>
-        </select>
+        </select> -->
     </div>
     <div class="cards">
         <div class="card card-1">
@@ -122,10 +122,9 @@
 
 <div id="timeZone" style="display:none;">{{ dates }}</div>
 <div id="results" style="display:none;">{{ cds_analysis_values }}</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 
 <script>
-
-
     const ctx = document.getElementById('cdsAnalysis').getContext('2d');
     var dates = JSON.parse(document.getElementById('timeZone').textContent);
     var number_of_records = JSON.parse(document.getElementById('results').textContent);
@@ -138,14 +137,64 @@
             datasets: [{
                 label: 'CDS-Analysis',
                 data: number_of_records,
-                backgroundColor: [
-                    '#FF6384',
-                ],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Change this to your preferred color
+                borderColor: 'rgba(75, 192, 192, 1)', // Change this to your preferred color
+                borderWidth: 2,
+                pointBackgroundColor: 'rgba(75, 192, 192, 1)', // Change this to your preferred color
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgba(75, 192, 192, 1)',// Change this to your preferred color
+                tension: 0.3
             }]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: 'CDS Analysis Over Time',
+                fontSize: 20
+            },
+            legend: {
+                display: true,
+                labels: {
+                    fontSize: 15
+                }
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+            },
+            hover: {
+                mode: 'nearest',
+                intersect: true
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Date',
+                        fontSize: 15
+                    },
+                    gridLines: {
+                        display: true,
+                        color: 'rgba(0, 0, 0, 0.1)'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Value',
+                        fontSize: 15
+                    },
+                    gridLines: {
+                        display: true,
+                        color: 'rgba(0, 0, 0, 0.1)'
+                    }
+                }]
+            }
         }
     });
-
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
-
 {% endblock %}

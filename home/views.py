@@ -1,3 +1,4 @@
+from datetime import datetime 
 import json
 import re
 from django.shortcuts import render, redirect
@@ -26,19 +27,19 @@ def dashboard(request):
     current_user = signup.objects.get(email=request.user.email)
     try:
         symptoms = Symptoms.objects.get(patient=current_user)
-        print("Symptoms found:", symptoms)
+        
 
         # Get the cdsAnalysis data
         cds_analysis_data = symptoms.cdsAnalysis
-        print("CDS Analysis data:", cds_analysis_data)
+        
 
         # Create two lists: one for dates and one for cdsAnalysis values
         dates = [item['timestamp'] for item in cds_analysis_data]
         cds_analysis_values = [item['value'] for item in cds_analysis_data]
-        print("Dates and values:", dates, cds_analysis_values)
+        
     
     except ObjectDoesNotExist :
-        print("No symptoms found for user")
+        
         # If the user has not been tested, set dates and cds_analysis_values to empty lists
         dates = []
         cds_analysis_values = []
@@ -47,7 +48,7 @@ def dashboard(request):
         'cds_analysis_values': json.dumps(cds_analysis_values),
         'userName': current_user.username,
     }
-    print(data)
+    
 
     # Pass the data to the template
     return render(request, "overviewContainer.html", data)
@@ -75,18 +76,52 @@ def output(request):
     symptoms, created = Symptoms.objects.get_or_create(patient=current_user)
 
     # Append the new values to the existing values in the JSON fields
-    symptoms.abdPain.append({"value": ap, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
-    symptoms.anemmia.append({"value": an, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
-    symptoms.diarhea.append({"value": di, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
-    symptoms.vomit.append({"value": vo, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
-    symptoms.bmi.append({"value": bmi, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
-    symptoms.cdsAnalysis.append({"value": res, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
-    symptoms.weightLoss.append({"value": we, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
+    for symptom, value in zip(['abdPain', 'anemmia', 'diarhea', 'vomit', 'bmi', 'cdsAnalysis', 'weightLoss'], [ap, an, di, vo, bmi, res, we]):
+        if len(getattr(symptoms, symptom)) >= 15:
+            getattr(symptoms, symptom).pop(0)
+        getattr(symptoms, symptom).append({"value": value, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
+
     # Save the Symptoms instance back to the database
     symptoms.save()
+
+
+
+
+# def output(request):
+#     ap = float(request.POST.get("ap"))
+#     an = float(request.POST.get("an"))
+#     di = float(request.POST.get("di"))
+#     vo = float(request.POST.get("vo"))
+#     we = float(request.POST.get("we"))
+#     bmi = float(request.POST.get("bmi"))
+    
+#     cds.Abdominal_Pain_var = ap
+#     cds.Anemia_var = an
+#     cds.Diarrhea_var = di
+#     cds.Vomiting_var = vo
+#     cds.Weight_Loss_var = we
+#     cds.Bmi_var = bmi
+    
+#     res = round(float(cds.Calculate()))
+#      # Get the user who is currently logged in
+#     current_user = signup.objects.get(email=request.user.email)
+
+#     # Get the existing Symptoms instance for the current user, or create a new one if it doesn't exist
+#     symptoms, created = Symptoms.objects.get_or_create(patient=current_user)
+
+#     # Append the new values to the existing values in the JSON fields
+#     symptoms.abdPain.append({"value": ap, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
+#     symptoms.anemmia.append({"value": an, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
+#     symptoms.diarhea.append({"value": di, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
+#     symptoms.vomit.append({"value": vo, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
+#     symptoms.bmi.append({"value": bmi, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
+#     symptoms.cdsAnalysis.append({"value": res, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
+#     symptoms.weightLoss.append({"value": we, "timestamp": timezone.now().strftime('%Y-%m-%d %H:%M:%S')})
+#     # Save the Symptoms instance back to the database
+#     symptoms.save()
     
     # return render(request,'result.html',{'res':res})
-    print(res)
+    
     return JsonResponse({'result': res})
 def bot(message):
     load_dotenv()
@@ -109,24 +144,24 @@ def run_script(request):
     return JsonResponse({'response': response})
     
 
-
 def overview(request):
     current_user = signup.objects.get(email=request.user.email)
     try:
         symptoms = Symptoms.objects.get(patient=current_user)
-        print("Symptoms found:", symptoms)
 
         # Get the cdsAnalysis data
         cds_analysis_data = symptoms.cdsAnalysis
-        print("CDS Analysis data:", cds_analysis_data)
+
+        # Sort the data by timestamp
+        sorted_cds_analysis_data = sorted(cds_analysis_data, key=lambda item: item['timestamp'], reverse=True)
 
         # Create two lists: one for dates and one for cdsAnalysis values
-        dates = [item['timestamp'] for item in cds_analysis_data]
-        cds_analysis_values = [item['value'] for item in cds_analysis_data]
-        print("Dates and values:", dates, cds_analysis_values)
+        dates = [datetime.strptime(item['timestamp'], '%Y-%m-%d %H:%M:%S').date().strftime('%Y-%m-%d') for item in sorted_cds_analysis_data][:15]
+        
+        cds_analysis_values = [item['value'] for item in sorted_cds_analysis_data][:15]
     
     except ObjectDoesNotExist :
-        print("No symptoms found for user")
+        
         # If the user has not been tested, set dates and cds_analysis_values to empty lists
         dates = []
         cds_analysis_values = []
@@ -135,10 +170,41 @@ def overview(request):
         'cds_analysis_values': json.dumps(cds_analysis_values),
         'userName': current_user.username,
     }
-    print(data)
+    
 
     # Pass the data to the template
     return render(request, "overviewContainer.html", data)
+
+# def overview(request):
+#     current_user = signup.objects.get(email=request.user.email)
+#     try:
+#         symptoms = Symptoms.objects.get(patient=current_user)
+        
+
+#         # Get the cdsAnalysis data
+#         cds_analysis_data = symptoms.cdsAnalysis
+        
+
+#         # Create two lists: one for dates and one for cdsAnalysis values
+#         # dates = [item['timestamp'] for item in cds_analysis_data]
+#         dates = [datetime.strptime(item['timestamp'], '%Y-%m-%d %H:%M:%S').date().strftime('%Y-%m-%d') for item in cds_analysis_data]
+#         cds_analysis_values = [item['value'] for item in cds_analysis_data][-10:]
+        
+    
+#     except ObjectDoesNotExist :
+        
+#         # If the user has not been tested, set dates and cds_analysis_values to empty lists
+#         dates = []
+#         cds_analysis_values = []
+#     data = {
+#         'dates': json.dumps(dates),
+#         'cds_analysis_values': json.dumps(cds_analysis_values),
+#         'userName': current_user.username,
+#     }
+    
+
+#     # Pass the data to the template
+#     return render(request, "overviewContainer.html", data)
     
 
 def product(request): 

@@ -157,8 +157,15 @@ input[type="submit"]:hover {
   }
 }
 
+<<<<<<< HEAD
 /*.contentbox {
   display: flex;
   margin-left: 40px;
 } 
 */
+=======
+/* .contentbox {
+  display: flex;
+  margin-left: 40px;
+} */
+>>>>>>> parent of 4d0381a (	modified:   db.sqlite3)

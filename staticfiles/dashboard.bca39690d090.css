@@ -140,7 +140,7 @@ img {
   top: 0;
   left: 0;
   border-radius: 10px;
-  height: 120%;
+  height: 110%;
   width: 300px;
   padding: 20px;
   background: var(--bg-color-first);
@@ -157,7 +157,7 @@ img {
   list-style: none;
 }
 .sidebar--bottom--items {
-  margin-bottom: 100px;
+  margin-bottom: 40px;
 }
 
 a {

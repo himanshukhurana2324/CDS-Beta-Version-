@@ -9,16 +9,6 @@
 }
 
 .carousel__container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.carousel-item {
-  flex: 0 0 48%; /* adjust this to fit your design */
-  margin-bottom: 2%; /* adjust this to fit your design */
-}
-.carousel__container {
   white-space: nowrap;
   margin: 70px 0px;
   padding-bottom: 10px;

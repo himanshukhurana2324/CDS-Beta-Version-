@@ -1,0 +1,386 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Arial", sans-serif;
+  position: relative;
+  background-color: #ffffff;
+  /* Changed to white */
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  /* relative to 100% of the viewport width */
+  height: 100vh;
+  /* relative to 100% of the viewport height */
+  z-index: -1;
+  overflow: hidden;
+}
+
+.background-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.form-card {
+  padding: 30px;
+  border-radius: 24px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  width: 90%;
+  margin: auto;
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.form-card:hover {
+  box-shadow: 0px 15px 30px rgba(0, 0, 255, 0.3);
+  /* Changed to blue */
+  transform: translateY(-5px);
+}
+
+.highlight-text {
+  color: #0000ff;
+  /* Changed to blue */
+  font-weight: bold;
+}
+
+.form-control-label {
+  margin-bottom: 0;
+  font-size: 1.2em;
+  color: #0000ff;
+  /* Changed to blue */
+}
+
+.input-field {
+  padding: 12px 20px;
+  border-radius: 15px;
+  margin: 10px 0px;
+  box-sizing: border-box;
+  border: 2px solid #0000ff;
+  /* Changed to blue */
+  font-size: 18px;
+  font-weight: 300;
+  transition: all 0.3s ease;
+  background-color: #f8f9fa;
+  position: relative;
+  color: #333;
+}
+
+.input-field::placeholder {
+  color: #808080;
+  /* Changed to gray */
+  font-style: italic;
+  transition: all 0.3s ease;
+  position: absolute;
+  left: 20px;
+}
+
+.input-field:focus {
+  box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+  /* Changed to blue */
+  border: 1px solid #f0f4f8;
+  outline-width: 0;
+  font-weight: 400;
+}
+
+.input-field:focus::placeholder {
+  transform: translateY(-25px);
+  opacity: 0;
+}
+
+.next-button,
+.prev-button,
+.submit-button {
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  background: linear-gradient(to right, #0000ff, #0000ff);
+}
+
+.Return-btn {
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  background: linear-gradient(to right, #b81010, #d20a0a);
+}
+
+.Return-btn {
+  margin-right: 100%;
+  margin-bottom: 10px;
+  padding: 2px 5px;
+  height: auto;
+  width: 60px;
+
+  border-radius: 6px;
+}
+
+.next-button:hover,
+.prev-button:hover,
+.submit-button:hover,
+.Return-btn:hover {
+  box-shadow: 0px 10px 15px rgba(0, 0, 255, 0.2);
+  /* Changed to blue */
+  transform: translateY(-2px);
+}
+
+.prev-button {
+  background: linear-gradient(to right, #0000ff, #0000ff);
+  /* Changed to blue */
+}
+
+.submit-button {
+  background: linear-gradient(to right, #0000ff, #0000ff);
+  /* Changed to blue */
+}
+
+.step-container {
+  position: relative;
+  text-align: center;
+  transform: translateY(-43%);
+}
+
+.step-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  /* Changed to white */
+  border: 2px solid #0000ff;
+  /* Changed to blue */
+  line-height: 30px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.step-circle:hover {
+  transform: scale(1.1);
+  border-color: #0000ff;
+  /* Changed to blue */
+}
+
+.step-circle.completed {
+  background-color: #0000ff;
+  /* Changed to blue */
+  color: #ffffff;
+  /* Changed to white */
+}
+
+.step-line {
+  position: absolute;
+  top: 16px;
+  left: 50px;
+  width: calc(100% - 100px);
+  height: 2px;
+  background-color: #0000ff;
+  /* Changed to blue */
+  z-index: -1;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #f3f3f3;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
+
+.progress-bar-inner {
+  height: 10px;
+  width: 0.5px;
+  background-color: #0000ff;
+  /* Changed to blue */
+  transition: width 0.3s ease;
+}
+
+@media only screen and (max-width: 600px) {
+  .form-card {
+    width: 100%;
+    padding: 10px;
+  }
+
+  body {
+    background-size: auto;
+  }
+
+  .next-button,
+  .prev-button,
+  .submit-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .input-field {
+    font-size: 14px;
+  }
+
+  .progress-bar {
+    height: 15px;
+  }
+
+  .progress-bar-inner {
+    height: 20px;
+  }
+}
+
+.resultPage,
+.redirectPage {
+  display: none;
+  opacity: 0;
+  transition: opacity 5s ease-in-out;
+  /* other styles... */
+}
+
+.resultPage {
+  display: none;
+  margin: 2em auto 0em auto;
+  width: 100%;
+  max-width: 500px;
+  background-color: rgba(255, 255, 255, 0.8);
+  /* Changed to match .form-card */
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 255, 0.1);
+  /* Changed to blue */
+  transition: opacity 0.5s ease-in-out;
+  padding: 15px;
+}
+
+.redirectPage {
+  display: none;
+  margin: 0em auto;
+  width: 100%;
+  max-width: 500px;
+  background-color: rgba(255, 255, 255, 0.8);
+  /* Changed to match .form-card */
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 255, 0.1);
+  /* Changed to blue */
+  transition: opacity 0.5s ease-in-out;
+  padding: 15px;
+}
+
+.resultPage {
+  color: #0000ff;
+  /* Changed to blue */
+  font-family: "Raleway", cursive;
+  width: 100%;
+  text-align: center;
+  font-weight: 200;
+  font-stretch: normal;
+  font-size: 1.2em;
+  margin-bottom: 0em;
+  transition: color 0.5s ease-in-out;
+}
+
+.redirectHeading {
+  color: #0000ff;
+  /* Changed to blue */
+  font-family: "Raleway", cursive;
+  width: 100%;
+  text-align: center;
+  font-weight: 300;
+  font-stretch: normal;
+  font-size: 1.6em;
+  margin-bottom: 0em;
+  transition: color 0.5s ease-in-out;
+}
+
+.slider {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .redirectPage {
+    width: 90%;
+  }
+
+  .redirectHeading {
+    font-size: 1.1em;
+  }
+}
+
+a {
+  color: #4a8df8;
+  font-family: "Raleway", cursive;
+}
+
+@media (max-width: 600px) {
+  .slider {
+    height: 1px;
+  }
+
+  .break {
+    height: 1px;
+    width: 1px;
+  }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+
+.formHeading {
+  color: #ffffff;
+  /* White color for better contrast */
+  font-family: "Montserrat", Arial, sans-serif;
+  text-align: center;
+  font-weight: 700;
+  font-size: 2.1em;
+  margin-bottom: 1em;
+  padding: 20px;
+  background: linear-gradient(135deg, #2e2e8e 0%, #1b6498 60%);
+  /* Changed to blue */
+  border-radius: 24px;
+  border: 1px solid #033a29;
+  /* White color for better contrast */
+  box-shadow: 0px 10px 20px rgba(7, 100, 58, 0.715);
+  /* Changed to blue */
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.formHeading:hover {
+  box-shadow: 0px 15px 30px rgba(0, 0, 255, 0.3);
+  /* Changed to blue */
+  transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+  .formHeading {
+    font-size: 80%;
+    /* Adjust font size for medium screens */
+  }
+}
+
+/* Adjust styles for small screens */
+@media (max-width: 480px) {
+  .formHeading {
+    font-size: 120%;
+    /* Adjust font size for small screens */
+    padding: 2vw;
+    /* Reduce padding for small screens */
+  }
+}
+
+#fnext {
+  visibility: hidden;
+}

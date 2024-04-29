@@ -1,4 +1,4 @@
-/* .settingscontainer {
+.settingscontainer {
   display: flex;
   flex-direction: column;
   background: #fff;
@@ -157,11 +157,11 @@ input[type="submit"]:hover {
   }
 }
 
- .contentbox {
+/* .contentbox {
   display: flex;
   margin-left: 40px;
-} 
-*/
+} */
+
 .contentbox {
   display: flex;
   flex-direction: column;

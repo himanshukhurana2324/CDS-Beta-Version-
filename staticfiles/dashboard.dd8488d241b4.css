@@ -37,8 +37,6 @@
   --more-and-less: #3bc59a;
 }
 
-/* header */
-
 .header {
   display: flex;
   align-items: center;
@@ -207,7 +205,7 @@ a.active {
   height: 120%;
   width: calc(100% - 300px);
   padding: 30px;
-  overflow-y: hidden;
+  overflow-y: scroll;
   overflow-x: hidden;
   background-color: var(--bg-color-second);
   z-index: 2;

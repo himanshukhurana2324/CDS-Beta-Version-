@@ -159,7 +159,11 @@ input[type="submit"]:hover {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*.contentbox {
+=======
+ .contentbox {
+>>>>>>> parent of 7c602df (	modified:   db.sqlite3)
 =======
  .contentbox {
 >>>>>>> parent of 7c602df (	modified:   db.sqlite3)
@@ -168,8 +172,11 @@ input[type="submit"]:hover {
 } 
 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
+=======
+>>>>>>> parent of 7c602df (	modified:   db.sqlite3)
 .contentbox {
   display: flex;
   flex-direction: column;
@@ -364,14 +371,20 @@ textarea {
   margin-bottom: 5px;
 }
 
+<<<<<<< HEAD
+>>>>>>> parent of 7c602df (	modified:   db.sqlite3)
+=======
 >>>>>>> parent of 7c602df (	modified:   db.sqlite3)
 /* .contentbox {
   display: flex;
   margin-left: 40px;
 } */
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of 4d0381a (	modified:   db.sqlite3)
 =======
+=======
+>>>>>>> parent of 7c602df (	modified:   db.sqlite3)
 .pageHeading {
   color: #333;
   font-family: "Roboto", sans-serif;
@@ -397,4 +410,7 @@ textarea {
     font-size: 1.5em;
   }
 }
+<<<<<<< HEAD
+>>>>>>> parent of 7c602df (	modified:   db.sqlite3)
+=======
 >>>>>>> parent of 7c602df (	modified:   db.sqlite3)

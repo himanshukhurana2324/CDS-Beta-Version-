@@ -107,11 +107,6 @@
   margin-right: 100px;
 }
 
-.contentbox {
-  display: flex;
-  margin-left: 40px;
-}
-
 #settingform {
   display: flex;
   flex-direction: column;
@@ -161,3 +156,9 @@ input[type="submit"]:hover {
     margin-left: 0;
   }
 }
+
+/*.contentbox {
+  display: flex;
+  margin-left: 40px;
+} 
+*/

@@ -37,8 +37,6 @@
   --more-and-less: #3bc59a;
 }
 
-/* header */
-
 .header {
   display: flex;
   align-items: center;

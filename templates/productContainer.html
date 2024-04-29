@@ -11,8 +11,40 @@
       <!-- <link rel="stylesheet" href="/static/productContainer.css"> -->
 
       <style>
+        .card {
+          box-shadow: 0 2px 8px rgba(3, 16, 93, 0.3);
+          /* Softer shadow */
+          transition: 0.3s;
+          width: 100%;
+          border-radius: 10px;
+          /* Larger border radius */
+          background-color: #fff;
+          margin-bottom: 20px;
+          padding: 20px;
+          /* Add padding */
+        }
+
+        .card-header {
+          padding: 20px;
+          background-color: #f1f1f1;
+          /* Lighter color */
+          border-bottom: 1px solid #e5e5e5;
+          border-radius: 10px 10px 0 0;
+          /* Rounded corners at the top */
+        }
+
+        .categories__title {
+          font-family: 'Roboto', sans-serif;
+          font-size: 36px;
+          font-weight: 700;
+          color: #2c3e50;
+          /* Darker shade of grey */
+          text-align: center;
+        }
+
         .carousel {
           width: 100%;
+          overflow-x: scroll;
           padding: 30px;
           padding-top: 0px;
           position: relative;
@@ -39,7 +71,7 @@
           transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
           transform-origin: center left;
           position: relative;
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
           padding: 20px;
           display: flex;
           flex-direction: column-reverse;
@@ -65,7 +97,7 @@
         }
 
         .carousel-item__details {
-          background: rgba(255, 255, 255, 0.8);
+          background: rgba(248, 185, 49, 0.6);
           font-size: 14px;
           opacity: 1;
           transition: background 0.3s ease-in-out;
@@ -87,7 +119,7 @@
         }
 
         .carousel-item:hover .carousel-item__details {
-          background: rgba(170, 212, 227, 1);
+          background: rgba(103, 242, 72, 0.722);
         }
 
         .carousel-item__details--title,
@@ -114,66 +146,6 @@
         }
 
         @media (max-width: 600px) {
-          .carousel-item__details--title {
-            font-size: 1.4em;
-            /* Reduce title font size on small screens */
-          }
-
-          .carousel-item__details--subtitle {
-            font-size: 1.1em;
-            /* Reduce subtitle font size on small screens */
-          }
-        }
-
-        @media (max-width: 600px) {
-          .carousel__container {
-            grid-template-columns: 1fr;
-          }
-
-          .carousel-item {
-            height: 200px;
-          }
-
-          .carousel-item__img {
-            height: 70%;
-          }
-
-          .carousel-item__details {
-            min-height: 30%;
-          }
-        }
-
-        .card {
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-          transition: 0.3s;
-          width: 100%;
-          border-radius: 10px;
-          background-color: #fff;
-          margin-bottom: 20px;
-          padding: 20px;
-        }
-
-        .card-header {
-          padding: 20px;
-          background-color: #f1f1f1;
-          border-bottom: 1px solid #e5e5e5;
-          border-radius: 10px 10px 0 0;
-        }
-
-        .categories__title {
-          font-family: 'Roboto', sans-serif;
-          font-size: 36px;
-          font-weight: 700;
-          color: #2c3e50;
-          text-align: center;
-        }
-
-        @media (max-width: 600px) {
-          .card {
-            padding: 10px;
-            /* Reduce padding on small screens */
-          }
-
           .categories__title {
             font-size: 24px;
             /* Reduce font size on small screens */
@@ -193,127 +165,101 @@
             <h2 class="categories__title">Recommended Products</h2>
           </div>
         </div>
-        <div class="card">
-          <div class="carousel__container product-grid">
-            <div class="carousel-item">
-              <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/61ueZjD-HBL._SL1500_.jpg"
-                alt="people" />
-              <div class="carousel-item__details">
-                <div class="controls">
-                  <span class="fas fa-play-circle"></span>
-                  <span class="fas fa-plus-circle"></span>
-                </div>
-                <h5 class="carousel-item__details--title">Descriptive Title</h5>
-                <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
+        <div class="carousel__container product-grid">
+          <div class="carousel-item">
+            <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/61ueZjD-HBL._SL1500_.jpg"
+              alt="people" />
+            <div class="carousel-item__details">
+              <div class="controls">
+                <span class="fas fa-play-circle"></span>
+                <span class="fas fa-plus-circle"></span>
               </div>
+              <h5 class="carousel-item__details--title">Descriptive Title</h5>
+              <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
             </div>
-            <div class="carousel-item">
-              <img class="carousel-item__img"
-                src="https://m.media-amazon.com/images/I/512Prt2cWgL._SX300_SY300_QL70_FMwebp_.jpg" alt="people" />
-              <div class="carousel-item__details">
-                <div class="controls">
-                  <span class="fas fa-play-circle"></span>
-                  <span class="fas fa-plus-circle"></span>
-                </div>
-                <h5 class="carousel-item__details--title">Descriptive Title</h5>
-                <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
+          </div>
+          <div class="carousel-item">
+            <img class="carousel-item__img"
+              src="https://m.media-amazon.com/images/I/512Prt2cWgL._SX300_SY300_QL70_FMwebp_.jpg" alt="people" />
+            <div class="carousel-item__details">
+              <div class="controls">
+                <span class="fas fa-play-circle"></span>
+                <span class="fas fa-plus-circle"></span>
               </div>
+              <h5 class="carousel-item__details--title">Descriptive Title</h5>
+              <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
             </div>
-            <div class="carousel-item">
-              <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/61pHDldkkjL._SL1200_.jpg"
-                alt="people" />
-              <div class="carousel-item__details">
-                <div class="controls">
-                  <span class="fas fa-play-circle"></span>
-                  <span class="fas fa-plus-circle"></span>
-                </div>
-                <h5 class="carousel-item__details--title">Descriptive Title</h5>
-                <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
+          </div>
+          <div class="carousel-item">
+            <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/61pHDldkkjL._SL1200_.jpg"
+              alt="people" />
+            <div class="carousel-item__details">
+              <div class="controls">
+                <span class="fas fa-play-circle"></span>
+                <span class="fas fa-plus-circle"></span>
               </div>
+              <h5 class="carousel-item__details--title">Descriptive Title</h5>
+              <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
             </div>
-            <div class="carousel-item">
-              <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/61pHDldkkjL._SL1200_.jpg"
-                alt="people" />
-              <div class="carousel-item__details">
-                <div class="controls">
-                  <span class="fas fa-play-circle"></span>
-                  <span class="fas fa-plus-circle"></span>
-                </div>
-                <h5 class="carousel-item__details--title">Descriptive Title</h5>
-                <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
+          </div>
+          <div class="carousel-item">
+            <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/71Y7LG3A8JS._SL1080_.jpg"
+              alt="people" />
+            <div class="carousel-item__details">
+              <div class="controls">
+                <span class="fas fa-play-circle"></span>
+                <span class="fas fa-plus-circle"></span>
               </div>
+              <h5 class="carousel-item__details--title">Descriptive Title</h5>
+              <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
             </div>
-            <div class="carousel-item">
-              <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/61pHDldkkjL._SL1200_.jpg"
-                alt="people" />
-              <div class="carousel-item__details">
-                <div class="controls">
-                  <span class="fas fa-play-circle"></span>
-                  <span class="fas fa-plus-circle"></span>
-                </div>
-                <h5 class="carousel-item__details--title">Descriptive Title</h5>
-                <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
+          </div>
+          <div class="carousel-item">
+            <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/718o4VvgBlL._SL1500_.jpg"
+              alt="people" />
+            <div class="carousel-item__details">
+              <div class="controls">
+                <span class="fas fa-play-circle"></span>
+                <span class="fas fa-plus-circle"></span>
               </div>
+              <h5 class="carousel-item__details--title">Descriptive Title</h5>
+              <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
             </div>
-            <div class="carousel-item">
-              <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/71Y7LG3A8JS._SL1080_.jpg"
-                alt="people" />
-              <div class="carousel-item__details">
-                <div class="controls">
-                  <span class="fas fa-play-circle"></span>
-                  <span class="fas fa-plus-circle"></span>
-                </div>
-                <h5 class="carousel-item__details--title">Descriptive Title</h5>
-                <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
+          </div>
+          <div class="carousel-item">
+            <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/51Hd7gcTsxL._SL1080_.jpg"
+              alt="people" />
+            <div class="carousel-item__details">
+              <div class="controls">
+                <span class="fas fa-play-circle"></span>
+                <span class="fas fa-plus-circle"></span>
               </div>
+              <h5 class="carousel-item__details--title">Descriptive Title</h5>
+              <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
             </div>
-            <div class="carousel-item">
-              <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/718o4VvgBlL._SL1500_.jpg"
-                alt="people" />
-              <div class="carousel-item__details">
-                <div class="controls">
-                  <span class="fas fa-play-circle"></span>
-                  <span class="fas fa-plus-circle"></span>
-                </div>
-                <h5 class="carousel-item__details--title">Descriptive Title</h5>
-                <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/51Hd7gcTsxL._SL1080_.jpg"
-                alt="people" />
-              <div class="carousel-item__details">
-                <div class="controls">
-                  <span class="fas fa-play-circle"></span>
-                  <span class="fas fa-plus-circle"></span>
-                </div>
-                <h5 class="carousel-item__details--title">Descriptive Title</h5>
-                <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/51Hd7gcTsxL._SL1080_.jpg"
-                alt="people" />
-              <div class="carousel-item__details">
-                <div class="controls">
-                  <span class="fas fa-play-circle"></span>
-                  <span class="fas fa-plus-circle"></span>
-                </div>
-                <h5 class="carousel-item__details--title">Descriptive Title</h5>
-                <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
-              </div>
-            </div>
+          </div>
 
-
+          <div class="carousel-item">
+            <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/718AErfDGfL._SL1500_.jpg 
+          />
+          <div class=" carousel-item__details">
+            <div class="controls">
+              <span class="fas fa-play-circle"></span>
+              <span class="fas fa-plus-circle"></span>
+            </div>
+            <h5 class="carousel-item__details--title">Descriptive Title</h5>
+            <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
           </div>
         </div>
-
-      </section>
-
-
-    </body>
-
   </div>
+
+
+  </section>
+
+
+  </body>
+
+</div>
 </div>
 
 {% endblock %}

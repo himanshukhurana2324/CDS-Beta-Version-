@@ -5,11 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">html,
+    <link rel="stylesheet" href="/static/formStyle.css">
     <style>
+        html,
         body {
             margin: 0;
             padding: 0;
@@ -23,9 +22,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: "Arial", sans-serif;
+            font-family: 'Arial', sans-serif;
             position: relative;
-            background-color: #ffffff;
+            background-color: #FFFFFF;
             /* Changed to white */
         }
 
@@ -65,7 +64,7 @@
         }
 
         .highlight-text {
-            color: #0000ff;
+            color: #0000FF;
             /* Changed to blue */
             font-weight: bold;
         }
@@ -73,7 +72,7 @@
         .form-control-label {
             margin-bottom: 0;
             font-size: 1.2em;
-            color: #0000ff;
+            color: #0000FF;
             /* Changed to blue */
         }
 
@@ -82,7 +81,7 @@
             border-radius: 15px;
             margin: 10px 0px;
             box-sizing: border-box;
-            border: 2px solid #0000ff;
+            border: 2px solid #0000FF;
             /* Changed to blue */
             font-size: 18px;
             font-weight: 300;
@@ -117,18 +116,21 @@
         .next-button,
         .prev-button,
         .submit-button {
-            color: #ffffff;
-            border: 2px solid #ffffff;
+            color: #FFFFFF;
+            border: 2px solid #FFFFFF;
             cursor: pointer;
-            background: linear-gradient(to right, #0000ff, #0000ff);
+            background: linear-gradient(to right, #0000FF, #0000FF);
+
         }
 
         .Return-btn {
-            color: #ffffff;
-            border: 2px solid #ffffff;
+            color: #FFFFFF;
+            border: 2px solid #FFFFFF;
             cursor: pointer;
             background: linear-gradient(to right, #b81010, #d20a0a);
+
         }
+
 
         .Return-btn {
             margin-right: 100%;
@@ -150,14 +152,16 @@
         }
 
         .prev-button {
-            background: linear-gradient(to right, #0000ff, #0000ff);
+            background: linear-gradient(to right, #0000FF, #0000FF);
             /* Changed to blue */
         }
 
         .submit-button {
-            background: linear-gradient(to right, #0000ff, #0000ff);
+            background: linear-gradient(to right, #0000FF, #0000FF);
             /* Changed to blue */
         }
+
+
 
         .step-container {
             position: relative;
@@ -169,9 +173,9 @@
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            background-color: #ffffff;
+            background-color: #FFFFFF;
             /* Changed to white */
-            border: 2px solid #0000ff;
+            border: 2px solid #0000FF;
             /* Changed to blue */
             line-height: 30px;
             font-weight: bold;
@@ -185,14 +189,14 @@
 
         .step-circle:hover {
             transform: scale(1.1);
-            border-color: #0000ff;
+            border-color: #0000FF;
             /* Changed to blue */
         }
 
         .step-circle.completed {
-            background-color: #0000ff;
+            background-color: #0000FF;
             /* Changed to blue */
-            color: #ffffff;
+            color: #FFFFFF;
             /* Changed to white */
         }
 
@@ -202,7 +206,7 @@
             left: 50px;
             width: calc(100% - 100px);
             height: 2px;
-            background-color: #0000ff;
+            background-color: #0000FF;
             /* Changed to blue */
             z-index: -1;
         }
@@ -218,7 +222,7 @@
         .progress-bar-inner {
             height: 10px;
             width: 0.5px;
-            background-color: #0000ff;
+            background-color: #0000FF;
             /* Changed to blue */
             transition: width 0.3s ease;
         }
@@ -278,7 +282,7 @@
 
         .redirectPage {
             display: none;
-            margin: 0em auto;
+            margin: 0.0em auto;
             width: 100%;
             max-width: 500px;
             background-color: rgba(255, 255, 255, 0.8);
@@ -291,9 +295,9 @@
         }
 
         .resultPage {
-            color: #0000ff;
+            color: #0000FF;
             /* Changed to blue */
-            font-family: "Raleway", cursive;
+            font-family: 'Raleway', cursive;
             width: 100%;
             text-align: center;
             font-weight: 200;
@@ -304,9 +308,9 @@
         }
 
         .redirectHeading {
-            color: #0000ff;
+            color: #0000FF;
             /* Changed to blue */
-            font-family: "Raleway", cursive;
+            font-family: 'Raleway', cursive;
             width: 100%;
             text-align: center;
             font-weight: 300;
@@ -325,6 +329,7 @@
         @media (max-width: 600px) {
             .redirectPage {
                 width: 90%;
+
             }
 
             .redirectHeading {
@@ -334,8 +339,9 @@
 
         a {
             color: #4a8df8;
-            font-family: "Raleway", cursive;
+            font-family: 'Raleway', cursive;
         }
+
 
         @media (max-width: 600px) {
             .slider {
@@ -348,12 +354,12 @@
             }
         }
 
-        @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
         .formHeading {
-            color: #ffffff;
+            color: #FFFFFF;
             /* White color for better contrast */
-            font-family: "Montserrat", Arial, sans-serif;
+            font-family: 'Montserrat', Arial, sans-serif;
             text-align: center;
             font-weight: 700;
             font-size: 2.1em;
@@ -392,11 +398,14 @@
             }
         }
 
+
         #fnext {
             visibility: hidden;
         }
     </style>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>

@@ -8,16 +8,164 @@
     <html lang="en">
 
     <head>
-      <link rel="stylesheet" href="/static/productContainer.css">
+      <!-- <link rel="stylesheet" href="/static/productContainer.css"> -->
+
+      <style>
+        .card {
+          box-shadow: 0 2px 8px rgba(3, 16, 93, 0.3);
+          /* Softer shadow */
+          transition: 0.3s;
+          width: 100%;
+          border-radius: 10px;
+          /* Larger border radius */
+          background-color: #fff;
+          margin-bottom: 20px;
+          padding: 20px;
+          /* Add padding */
+        }
+
+        .card-header {
+          padding: 20px;
+          background-color: #f1f1f1;
+          /* Lighter color */
+          border-bottom: 1px solid #e5e5e5;
+          border-radius: 10px 10px 0 0;
+          /* Rounded corners at the top */
+        }
+
+        .categories__title {
+          font-family: 'Roboto', sans-serif;
+          font-size: 36px;
+          font-weight: 700;
+          color: #2c3e50;
+          /* Darker shade of grey */
+          text-align: center;
+        }
+
+        .carousel {
+          width: 100%;
+          overflow-x: scroll;
+          padding: 30px;
+          padding-top: 0px;
+          position: relative;
+          box-sizing: border-box;
+        }
+
+        .carousel__container {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          grid-auto-rows: minmax(250px, auto);
+          grid-gap: 20px;
+          margin: 70px 0px;
+          padding-bottom: 10px;
+          white-space: normal;
+        }
+
+        .carousel-item {
+          width: 100%;
+          height: 300px;
+          border-radius: 10px;
+          background-color: #f2f2f2;
+          overflow: hidden;
+          cursor: pointer;
+          transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+          transform-origin: center left;
+          position: relative;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          display: flex;
+          flex-direction: column-reverse;
+        }
+
+        .carousel-item:hover {
+          transform: scale(1.05);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-item__img {
+          width: 100%;
+          height: 80%;
+          object-fit: cover;
+          flex-grow: 1;
+          border-radius: 10px 10px 0 0;
+          order: -1;
+          transition: opacity 0.3s ease-in-out;
+        }
+
+        .carousel-item:hover .carousel-item__img {
+          opacity: 0.7;
+        }
+
+        .carousel-item__details {
+          background: rgba(248, 185, 49, 0.6);
+          font-size: 14px;
+          opacity: 1;
+          transition: background 0.3s ease-in-out;
+          padding: 10px 20px;
+          position: absolute;
+          top: auto;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          color: #333;
+          font-family: 'Roboto', sans-serif;
+          height: auto;
+          min-height: 20%;
+          max-height: 50%;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        .carousel-item:hover .carousel-item__details {
+          background: rgba(103, 242, 72, 0.722);
+        }
+
+        .carousel-item__details--title,
+        .carousel-item__details--subtitle {
+          color: #333;
+          margin: 0;
+          font-family: 'Roboto', sans-serif;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .carousel-item__details--title {
+          margin-top: 3px;
+          font-size: 1.8em;
+          font-weight: bold;
+          margin-bottom: 5px;
+        }
+
+        .carousel-item__details--subtitle {
+          font-size: 1.4em;
+          margin-bottom: 15px;
+        }
+
+        @media (max-width: 600px) {
+          .categories__title {
+            font-size: 24px;
+            /* Reduce font size on small screens */
+          }
+        }
+      </style>
     </head>
 
-    <body>
 
+    <body>
       <div class="background-texture"></div>
 
+
       <section class="carousel">
-        <h2 class="categories__title">Recommended Products</h2>
-        <div class="carousel__container">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="categories__title">Recommended Products</h2>
+          </div>
+        </div>
+        <div class="carousel__container product-grid">
           <div class="carousel-item">
             <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/61ueZjD-HBL._SL1500_.jpg"
               alt="people" />
@@ -104,8 +252,9 @@
           </div>
         </div>
   </div>
-  </section>
 
+
+  </section>
 
 
   </body>

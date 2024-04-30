@@ -7,6 +7,8 @@
         transform: translateY(20px);
         animation: loadCard 0.5s forwards;
         transition: transform 0.3s, opacity 0.3s;
+        width: 39em;
+        height: 25em;
     }
 
     @keyframes loadCard {
@@ -24,70 +26,71 @@
         animation-delay: 0.2s;
     }
 
-    .card-3 {
-        animation-delay: 0.3s;
+    iframe {
+        width: 100%;
+        height: 376px;
+        border: none;
     }
 
-    .card-4 {
-        animation-delay: 0.4s;
+    @media screen and (max-width: 600px) {
+
+
+        iframe {
+            width: 200px;
+            overflow: scroll;
+
+
+        }
+
+        .cards {
+
+
+            height: 300px;
+
+        }
+
+
     }
 </style>
 
 <div class="main--container">
     <div class="section--title">
         <h3 class="title">Welcome back,{{userName}}</h3>
-        <!-- <select name="date" id="date">
-            <option value="last7">Last 7 days</option>
-            <option value="lastmonth">Last month</option>
-            <option value="lastyear">Last year</option>
-            <option value="alltime">All time</option>
-        </select> -->
+
     </div>
     <div class="cards">
         <div class="card card-1">
-            <div class="card--title">
-                <span class="card--icon icon"><i class="ri-shopping-bag-2-line"></i></span>
-                <span>Prediction</span>
+            <div class="gmaps">
+                <iframe src="https://www.slideshare.net/slideshow/embed_code/key/KsIvFoKIqz2YqO?startSlide=1" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" ; allowfullscreen></iframe><div style="margin-bottom:5px"><strong><a href="https://www.slideshare.net/slideshow/celiac-disease-241507062/241507062" title="Celiac disease " target="_blank">Celiac disease </a></strong></div>
+
             </div>
-            <h3 class="card--value">80%<i class="ri-arrow-up-circle-fill up"></i></h3>
-            <h5 class="more">Go for OPD Test</h5>
-            <div class="chart">
-                <canvas id="sales"></canvas>
-            </div>
+
         </div>
         <div class="card card-2">
-            <div class="card--title">
-                <span class="card--icon icon"><i class="ri-gift-line"></i></span>
-                <span>Heath score</span>
+            <div class="gmaps">
+                <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13585.988214962876!2d74.86761208034926!3d31.64761835337063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39197d9917c20805%3A0xcc735ff7a3c09356!2sgluten%20free%20rasoi%20in%20Amritsar%20%2F%20gluten%20free%20products%2C%20snacks!5e0!3m2!1sen!2sin!4v1714464001868!5m2!1sen!2sin"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                
+
             </div>
-            <h3 class="card--value">80% <i class="ri-arrow-down-circle-fill down"></i></h3>
-            <h5 class="less">234 less than usual</h5>
+
+
+            
+
+
+
+
+
+
+
+
             <div class="chart">
                 <canvas id="orders"></canvas>
             </div>
         </div>
-        <div class="card card-3">
-            <div class="card--title">
-                <span class="card--icon icon"><i class="ri-handbag-line"></i></span>
-                <span>Products</span>
-            </div>
-            <h3 class="card--value">10 <i class="ri-arrow-up-circle-fill up"></i></h3>
-            <h5 class="more">23 more than usual</h5>
-            <div class="chart">
-                <canvas id="products"></canvas>
-            </div>
-        </div>
-        <div class="card card-4">
-            <div class="card--title">
-                <span class="card--icon icon"><i class="ri-user-line"></i></span>
-                <span>Blood Count</span>
-            </div>
-            <h3 class="card--value">200000<i class="ri-arrow-down-circle-fill down"></i></h3>
-            <h5 class="less">less than usual</h5>
-            <div class="chart">
-                <canvas id="customers"></canvas>
-            </div>
-        </div>
+
+
     </div>
     <div class="target-vs-sales--container">
 

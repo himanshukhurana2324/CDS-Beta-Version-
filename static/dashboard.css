@@ -27,7 +27,7 @@
   --text-color-first: #fff;
   --text-color-second: #9b9a9a;
 
-  --hover-text-color: #000;
+  --hover-text-color: #f3f3f3;
 
   --bg-card-1: linear-gradient(to bottom right, #242424, #3d381a);
   --bg-card-2: linear-gradient(to bottom right, #242424, #2d3353);
@@ -35,6 +35,26 @@
   --bg-card-4: linear-gradient(to bottom right, #242424, #4c325e);
 
   --more-and-less: #3bc59a;
+
+  .main--container {
+    background: var(--bg-color-second);
+   }
+   
+   .logo span {
+    background: linear-gradient(to left, #1afff0, #26daea,#3aaeec, #17c7fc);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+   }
+
+   .card {
+    background-color: var(--bg-color-second);
+   }
+
+   
+
+
 }
 
 /* header */
@@ -66,7 +86,10 @@
 }
 
 .logo span {
-  color: var(--text-color-third);
+  background: linear-gradient(to left, #147d9d, #0848a0,#336fa3, #147d9d);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
   font-family: "Oswald", sans-serif;
 }
 
@@ -177,14 +200,11 @@ a {
 
 .sidebar--items a:hover,
 .sidebar--bottom--items a:hover {
-  background: var(--bg-color-third);
+  background: linear-gradient(to left, #147d9d, #0848a0,#336fa3, #147d9d);
   color: var(--hover-text-color);
 }
 
-a.active {
-  background: var(--bg-color-third);
-  color: var(--hover-text-color);
-}
+
 
 .icon {
   display: flex;

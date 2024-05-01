@@ -3,11 +3,11 @@
 :root {
   --bg-color-first: #fff;
   --bg-color-second: #e9edf1;
-  --bg-color-third: #3bc59a;
+  --bg-color-third: #111c81;
 
   --text-color-first: #000;
   --text-color-second: #3d3c3c;
-  --text-color-third: #3bc59a;
+  --text-color-third: #0a5086;
 
   --hover-text-color: #fff;
 
@@ -34,7 +34,7 @@
   --bg-card-3: linear-gradient(to bottom right, #242424, #4d3720);
   --bg-card-4: linear-gradient(to bottom right, #242424, #4c325e);
 
-  --more-and-less: #3bc59a;
+  --more-and-less: #3b60c5;
 }
 
 /* header */
@@ -182,7 +182,7 @@ a {
 }
 
 a.active {
-  background: var(--bg-color-third);
+  background: rgb(4, 43, 105);
   color: var(--hover-text-color);
 }
 
@@ -341,7 +341,7 @@ h5 {
 
 .target .circle {
   margin-right: 5px;
-  color: #3bc59a;
+  color: #463bc5;
 }
 .current .circle {
   margin-right: 5px;

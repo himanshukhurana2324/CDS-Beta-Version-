@@ -8,6 +8,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/formStyle.css">
     <style>
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInFromBottom {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromTop {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
         html,
         body {
             margin: 0;
@@ -38,6 +74,7 @@
             /* relative to 100% of the viewport height */
             z-index: -1;
             overflow: hidden;
+            animation: zoomIn 0.7s ease-in-out;
         }
 
         .background-video video {
@@ -55,6 +92,7 @@
             width: 90%;
             margin: auto;
             transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+            animation: slideInFromBottom 0.7s ease-in-out;
         }
 
         .form-card:hover {
@@ -263,6 +301,7 @@
             display: none;
             opacity: 0;
             transition: opacity 5s ease-in-out;
+            animation: slideInFromBottom 1s ease-in-out;
             /* other styles... */
         }
 
@@ -373,6 +412,7 @@
             box-shadow: 0px 10px 20px rgba(7, 100, 58, 0.715);
             /* Changed to blue */
             transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+            animation: slideInFromTop 0.9s ease-in-out;
         }
 
         .formHeading:hover {

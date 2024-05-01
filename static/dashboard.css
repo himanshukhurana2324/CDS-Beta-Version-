@@ -38,23 +38,18 @@
 
   .main--container {
     background: var(--bg-color-second);
-   }
-   
-   .logo span {
-    background: linear-gradient(to left, #1afff0, #26daea,#3aaeec, #17c7fc);
+  }
+
+  .logo span {
+    background: linear-gradient(to left, #1afff0, #26daea, #3aaeec, #17c7fc);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
-    
-   }
+  }
 
-   .card {
+  .card {
     background-color: var(--bg-color-second);
-   }
-
-   
-
-
+  }
 }
 
 /* header */
@@ -86,7 +81,7 @@
 }
 
 .logo span {
-  background: linear-gradient(to left, #147d9d, #0848a0,#336fa3, #147d9d);
+  background: linear-gradient(to left, #147d9d, #0848a0, #336fa3, #147d9d);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
@@ -173,6 +168,7 @@ img {
   z-index: 10;
   box-shadow: #090808;
   transition: 0.3s;
+  animation: slideInFromLeft 0.6s ease-in-out;
 }
 
 .sidebar--items li,
@@ -200,11 +196,9 @@ a {
 
 .sidebar--items a:hover,
 .sidebar--bottom--items a:hover {
-  background: linear-gradient(to left, #147d9d, #0848a0,#336fa3, #147d9d);
+  background: linear-gradient(to left, #147d9d, #0848a0, #336fa3, #147d9d);
   color: var(--hover-text-color);
 }
-
-
 
 .icon {
   display: flex;

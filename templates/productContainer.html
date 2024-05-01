@@ -11,6 +11,42 @@
       <!-- <link rel="stylesheet" href="/static/productContainer.css"> -->
 
       <style>
+        @keyframes slideInFromBottom {
+          0% {
+            transform: translateY(100%);
+            opacity: 0;
+          }
+
+          100% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+
+        .irow1 {
+          animation: slideInFromBottom 0.6s ease-out;
+        }
+
+        .irow2 {
+          animation: slideInFromBottom 1.2s ease-out;
+        }
+
+        .irow3 {
+          animation: slideInFromBottom 1.5s ease-out;
+        }
+
+        @keyframes zoomIn {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
         .carousel {
           width: 100%;
           padding: 30px;
@@ -151,6 +187,7 @@
           background-color: #fff;
           margin-bottom: 20px;
           padding: 20px;
+          animation: zoomIn 0.5s ease-in-out;
         }
 
         .card-header {
@@ -158,13 +195,14 @@
           background: linear-gradient(135deg, #2e2e8e 0%, #1b6498 60%);
           border-bottom: 1px solid #0a0909;
           border-radius: 10px 10px 0 0;
+          animation: zoomIn 0.7s ease-in-out;
         }
 
         .categories__title {
           font-family: 'Roboto', sans-serif;
           font-size: 36px;
           font-weight: 700;
-          background:white;
+          background: white;
           -webkit-text-fill-color: transparent;
           -webkit-background-clip: text;
           background-clip: text;
@@ -198,7 +236,7 @@
         </div>
         <div class="card">
           <div class="carousel__container product-grid">
-            <div class="carousel-item">
+            <div class="carousel-item irow1">
               <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/61ueZjD-HBL._SL1500_.jpg"
                 alt="people" />
               <div class="carousel-item__details">
@@ -210,7 +248,7 @@
                 <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
               </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item irow2">
               <img class="carousel-item__img"
                 src="https://m.media-amazon.com/images/I/512Prt2cWgL._SX300_SY300_QL70_FMwebp_.jpg" alt="people" />
               <div class="carousel-item__details">
@@ -222,7 +260,7 @@
                 <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
               </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item irow3">
               <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/61pHDldkkjL._SL1200_.jpg"
                 alt="people" />
               <div class="carousel-item__details">
@@ -234,7 +272,7 @@
                 <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
               </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item irow1">
               <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/61pHDldkkjL._SL1200_.jpg"
                 alt="people" />
               <div class="carousel-item__details">
@@ -246,7 +284,7 @@
                 <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
               </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item irow2">
               <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/61pHDldkkjL._SL1200_.jpg"
                 alt="people" />
               <div class="carousel-item__details">
@@ -258,7 +296,7 @@
                 <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
               </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item irow3">
               <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/71Y7LG3A8JS._SL1080_.jpg"
                 alt="people" />
               <div class="carousel-item__details">
@@ -270,7 +308,7 @@
                 <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
               </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item irow1">
               <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/718o4VvgBlL._SL1500_.jpg"
                 alt="people" />
               <div class="carousel-item__details">
@@ -282,7 +320,7 @@
                 <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
               </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item irow2">
               <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/51Hd7gcTsxL._SL1080_.jpg"
                 alt="people" />
               <div class="carousel-item__details">
@@ -294,7 +332,7 @@
                 <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
               </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item irow3">
               <img class="carousel-item__img" src="https://m.media-amazon.com/images/I/51Hd7gcTsxL._SL1080_.jpg"
                 alt="people" />
               <div class="carousel-item__details">

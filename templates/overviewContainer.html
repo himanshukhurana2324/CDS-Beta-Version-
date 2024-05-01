@@ -1,6 +1,7 @@
 {% extends 'dashboard.html' %}
 
 {% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
     .main--container {
         font-family: Arial, sans-serif;
@@ -10,23 +11,51 @@
     }
 
     .section--title {
+        font-family: 'Roboto', sans-serif;
         font-size: 24px;
         font-weight: bold;
-        margin-bottom: 20px;
+        width: fit-content;
+        margin: auto auto 20px 1em;
+        padding: 20px;
+        background-color: #f4f4f4;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        animation: zoomIn 1s ease-out;
     }
 
+    @media (max-width: 768px) {
+        .section--title {
+            font-size: 18px;
+            padding: 15px;
+            margin-bottom: 5px;
+        }
+    }
 
+    @media (max-width: 480px) {
+        .section--title {
+            font-size: 14px;
+            margin-bottom: 5px;
+            padding: 10px;
+        }
+    }
 
+    @keyframes zoomIn {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
 
     .card {
-        opacity: 0;
-        animation: fadeIn 1s forwards;
 
-        transform: translateY(20px);
-        animation: loadCard 0.5s forwards, gradient 3s ease infinite;
         transition: transform 0.3s, opacity 0.3s;
         width: 30em;
-        /* Reduced width */
         height: 25em;
         border-radius: 10px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -38,23 +67,9 @@
 
     .card:hover {
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        /* Larger shadow on hover */
         transform: translateY(-5px);
-        /* Move card up on hover */
     }
 
-    @keyframes fadeIn {
-        to {
-            opacity: 1;
-        }
-    }
-
-    @keyframes loadCard {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
 
     @keyframes gradient {
         0% {
@@ -70,22 +85,13 @@
         }
     }
 
-    .card-1 {
-        animation-delay: 0.1s;
-    }
-
-    .card-2 {
-        animation-delay: 0.2s;
-    }
 
     iframe {
         width: 100%;
         height: 376px;
-        border: 1px solid #01112b;
+        border: 1px solid #06869f;
         border-radius: 10px;
-        /* Rounded corners for iframe */
         overflow: hidden;
-        /* Hide scrollbars */
     }
 
     @media screen and (max-width: 600px) {
@@ -95,15 +101,17 @@
         }
 
         .cards {
-            height: 200px;
+            flex-direction: column;
+        }
+
+        .card {
+            margin-bottom: 20px;
         }
     }
 
     .chart {
         width: 100%;
         height: auto;
-
-
     }
 
     .cards {
@@ -114,18 +122,6 @@
 
     .card {
         flex: 0 0 auto;
-        /* other styles... */
-    }
-
-    @media screen and (max-width: 600px) {
-        .cards {
-            flex-direction: column;
-        }
-
-        .card {
-            /* other styles... */
-            margin-bottom: 20px;
-        }
     }
 
     canvas {
@@ -133,31 +129,120 @@
         height: auto !important;
     }
 
-    .section--title {
-        font-size: 18px;
-        font-weight: bold;
-        color: #006064;
-        text-transform: uppercase;
-        text-align: center;
-        padding: 20px;
-        border: 2px solid #17547a;
-        border-radius: 10px;
-        width: fit-content;
-        margin: 0px 60% 20px auto;
-        background-color: #f4f4f4;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+
+
+    @keyframes zoomIn {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
     }
 
-    @media screen and (max-width: 600px) {
-        .section--title {
-            font-size: 20px;
-            padding: 10px;
-            width: 100%;
+    .card {
+        /* other styles... */
+        opacity: 0;
+    }
+
+    .card:nth-child(odd) {
+        animation: slideInFromLeft 1s forwards;
+    }
+
+    .card:nth-child(even) {
+        animation: slideInFromRight 1s forwards;
+    }
+
+
+
+    @keyframes slideInFromLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-50px);
         }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideInFromRight {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .chatbot-toggler {
+        background-color: #033875 !important;
+        border: none !important;
+        color: white !important;
+        padding: 15px !important;
+        text-align: center !important;
+        text-decoration: none !important;
+        display: flex !important;
+        /* Changed from inline-block to flex */
+        justify-content: center !important;
+        /* Added to center horizontally */
+        align-items: center !important;
+        /* Added to center vertically */
+        font-size: 16px !important;
+        margin: 4px 2px !important;
+        cursor: pointer !important;
+        border-radius: 50% !important;
+    }
+
+    .material-symbols-rounded,
+    .material-symbols-outlined {
+        color: white !important;
+    }
+
+    .chatbot {
+        background-color: #efeff6 !important;
+        /* Navy blue */
+        color: white !important;
+    }
+
+    .chatbot header {
+        background-color: #0b316b !important;
+        /* Navy blue */
+        color: white !important;
+    }
+
+    .chatbot .chat-input {
+        background-color: #f3f3f6 !important;
+        /* Navy blue */
+        color: white !important;
+    }
+
+    .material-symbols-outlined,
+    .material-symbols-rounded {
+        color: white !important;
+    }
+
+    .close-btn {
+        color: white !important;
+    }
+
+    #send-btn {
+        background-color: white !important;
+        color: #000080 !important;
+        /* Navy blue */
     }
 </style>
 <div class="main--container">
+
     <h3 class="section--title">Welcome back, {{userName}}</h3>
+
 
     <div class="cards">
         <div class="card card-1">

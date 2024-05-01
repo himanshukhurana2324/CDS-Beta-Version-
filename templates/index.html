@@ -477,9 +477,12 @@
                                 <div class="step step-1">
                                     <h3>Abdominal Pain:</h3>
                                     <div class="mb-3">
-                                        <label for="abdominalPain">Abdominal Pain:</label>
+                                        <label for="abdominalPain">On a scale of 1 to 10, with 1 being minimal pain and
+                                            10 being the most severe pain, how would you rate your abdominal
+                                            pain</label>
                                         <input class="input-field" type="number" size="15" id="abdominalPain"
-                                            placeholder="Enter value : 1 to 10" name="ap" class="form-control" />
+                                            placeholder="Enter value : 1 to 10" name="ap" class="form-control" min="1"
+                                            max="10" required />
                                     </div>
                                     <button type="button" class="btn btn-primary next-button">Next</button>
                                     <button type="button" class="btn btn-primary next-button " disabled
@@ -489,9 +492,11 @@
                                 <div class="step step-2">
                                     <h3>Anemia:</h3>
                                     <div class="mb-3">
-                                        <label for="anemia">Anemia:</label>
+                                        <label for="anemia">On a scale of 1 to 10, with 1 being minimal pain and 10
+                                            being the most severe symptoms, how would you rate your Anemia</label>
                                         <input class="input-field" type="number" size="15" id="anemia"
-                                            placeholder="Enter value : 1 to 10" name="an" class="form-control" />
+                                            placeholder="Enter value : 1 to 10" name="an" class="form-control" min="1"
+                                            max="10" required />
                                     </div>
                                     <button type="button" class="btn btn-primary prev-button">Previous</button>
                                     <button type="button" class="btn btn-primary next-button">Next</button>
@@ -500,9 +505,12 @@
                                 <div class="step step-3">
                                     <h3>Vomiting:</h3>
                                     <div class="mb-3">
-                                        <label for="vomiting">Vomiting:</label>
+                                        <label for="vomiting">On a scale of 1 to 10, with 1 being minimal symptoms and
+                                            10 being the most severe symptoms, how would you rate your
+                                            vomiting?</label>
                                         <input class="input-field" type="number" size="15" id="vomiting"
-                                            placeholder="Enter value : 1 to 10" name="vo" class="form-control" />
+                                            placeholder="Enter value : 1 to 10" name="vo" class="form-control" min="1"
+                                            max="10" required />
                                     </div>
                                     <button type="button" class="btn btn-primary prev-button">Previous</button>
                                     <button type="button" class="btn btn-primary next-button">Next</button>
@@ -511,9 +519,12 @@
                                 <div class="step step-4">
                                     <h3>Diarrhea:</h3>
                                     <div class="mb-3">
-                                        <label for="diarrhea">Diarrhea:</label>
+                                        <label for="diarrhea">On a scale of 1 to 10, with 1 being minimal symptoms and
+                                            10 being the most severe symptoms, how would you rate your
+                                            diarrhea?</label>
                                         <input class="input-field" type="number" size="15" id="diarrhea"
-                                            placeholder="Enter value : 1 to 10" name="di" class="form-control" />
+                                            placeholder="Enter value : 1 to 10" name="di" class="form-control" min="1"
+                                            max="10" required />
                                     </div>
                                     <button type="button" class="btn btn-primary prev-button">Previous</button>
                                     <button type="button" class="btn btn-primary next-button">Next</button>
@@ -522,9 +533,12 @@
                                 <div class="step step-5">
                                     <h3>Weight Loss:</h3>
                                     <div class="mb-3">
-                                        <label for="weightLoss">Weight Loss:</label>
+                                        <label for="weightLoss">On a scale of 1 to 10, with 1 being minimal weight loss
+                                            and 10 being the most severe weight loss, how would you rate
+                                            your weight loss?</label>
                                         <input class="input-field" type="number" size="15" id="weightLoss"
-                                            placeholder="Enter value : 1 to 10" name="we" class="form-control" />
+                                            placeholder="Enter value : 1 to 10" name="we" class="form-control" min="1"
+                                            max="10" required />
                                     </div>
                                     <button type="button" class="btn btn-primary prev-button">Previous</button>
                                     <button type="button" class="btn btn-primary next-button">Next</button>
@@ -533,9 +547,11 @@
                                 <div class="step step-6">
                                     <h3>BMI:</h3>
                                     <div class="mb-3">
-                                        <label for="bmi">BMI:</label>
+                                        <label for="bmi">Please enter your Body Mass Index (BMI). It should be a value
+                                            between 1 and 40:</label>
                                         <input class="input-field" type="number" size="15" id="bmi"
-                                            placeholder="Enter value : 1 to 40" name="bmi" class="form-control" />
+                                            placeholder="Enter value : 1 to 40" name="bmi" class="form-control" min="1"
+                                            max="40" required />
                                     </div>
                                     <button type="button" class="btn btn-primary prev-button">Previous</button>
                                     <button type="submit" class="btn btn-success submit-button ">Submit</button>
@@ -657,12 +673,32 @@
                     setTimeout(function () {
                         resultDiv.style.opacity = '1';
                     }, 50);
-                    resultDiv.textContent = 'The result is: ' + data.result;
 
-                    // setTimeout(function () {
-                    //     let overviewUrl = document.querySelector('#overview-url').dataset.url;
-                    //     window.location.href = overviewUrl;
-                    // }, 5000);
+
+
+
+                    let Celiac_Disease_Probability_val = data.result; // assuming data.result is the value you're checking
+
+                    if (Celiac_Disease_Probability_val >= 0 && Celiac_Disease_Probability_val <= 10) {
+                        resultDiv.textContent = ' Extremely Low Chance of Celiac Disease';
+                    } else if (Celiac_Disease_Probability_val > 10 && Celiac_Disease_Probability_val <= 20) {
+                        resultDiv.textContent = ' Very Very Low Chance of Celiac Disease';
+                    } else if (Celiac_Disease_Probability_val > 20 && Celiac_Disease_Probability_val <= 30) {
+                        resultDiv.textContent = ' Very Low Chance of Celiac Disease';
+                    } else if (Celiac_Disease_Probability_val > 30 && Celiac_Disease_Probability_val <= 40) {
+                        resultDiv.textContent = ' Low Chance of Celiac Disease';
+                    } else if (Celiac_Disease_Probability_val > 40 && Celiac_Disease_Probability_val <= 50) {
+                        resultDiv.textContent = ' Medium Chance of Celiac Disease, Go for tTg-IgA Test';
+                    } else if (Celiac_Disease_Probability_val > 50 && Celiac_Disease_Probability_val <= 60) {
+                        resultDiv.textContent = ' Medium High Chance of Celiac Disease, Go for tTg-IgA Test';
+                    } else if (Celiac_Disease_Probability_val > 60 && Celiac_Disease_Probability_val <= 70) {
+                        resultDiv.textContent = ' High Chance of Celiac Disease, Go for tTg-IgA Test';
+                    } else if (Celiac_Disease_Probability_val > 70 && Celiac_Disease_Probability_val <= 80) {
+                        resultDiv.textContent = ' Very High Chance of Celiac Disease, Must go for tTg-IgA Test, Biopsy Test to confirm Celiac Disease';
+                    } else if (Celiac_Disease_Probability_val > 80) {
+                        resultDiv.textContent = ' Strong Chance of Celiac Disease, Must go for tTg-IgA Test, Biopsy Test to confirm Celiac Disease';
+                    }
+
 
                     let countdown = 10;
                     let countdownInterval = setInterval(function () {
@@ -693,9 +729,27 @@
 
         });
 
-        // ... your existing code ...
+
     });
 
+</script>
+<script>
+    var inputs = document.querySelectorAll('input[type="number"]');
+
+    inputs.forEach(function (input) {
+        input.addEventListener('input', function (e) {
+            var max = parseInt(e.target.max);
+            var min = parseInt(e.target.min);
+            var value = parseInt(e.target.value);
+
+            if (value > max) {
+                e.target.value = max;
+            }
+            if (value < min) {
+                e.target.value = min;
+            }
+        });
+    });
 </script>
 
 </html>

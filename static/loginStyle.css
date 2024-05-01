@@ -6,6 +6,24 @@
   box-sizing: border-box;
 }
 
+.select.input-field.state {
+  max-width: 350px;
+  width: 80%;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  height: 48px;
+  border-radius: 55px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  padding: 0 0.4rem;
+  position: relative;
+}
+
+.select.input-field.state::placeholder {
+  color: #aaa;
+  font-weight: 500;
+}
+
 body,
 input {
   font-family: "Poppins", sans-serif;
@@ -61,17 +79,16 @@ form.sign-in-form {
 }
 
 .title {
-  font-size: 2.2rem;
+  font-size: 2rem;
   color: #444;
-  margin-bottom: 10px;
 }
 
 .input-field {
-  max-width: 380px;
-  width: 100%;
+  max-width: 350px;
+  width: 80%;
   background-color: #f0f0f0;
   margin: 10px 0;
-  height: 55px;
+  height: 48px;
   border-radius: 55px;
   display: grid;
   grid-template-columns: 15% 85%;
@@ -98,6 +115,17 @@ form.sign-in-form {
 }
 
 .input-field input::placeholder {
+  color: #aaa;
+  font-weight: 500;
+}
+
+.option-container {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+}
+.option {
   color: #aaa;
   font-weight: 500;
 }
@@ -348,7 +376,7 @@ form.sign-in-form {
 
   .container.sign-up-mode:before {
     transform: translate(-50%, 100%);
-    bottom: 32%;
+    bottom: 24%;
     right: initial;
   }
 
@@ -370,6 +398,25 @@ form.sign-in-form {
   .container.sign-up-mode .signin-signup {
     top: 5%;
     transform: translate(-50%, 0);
+  }
+}
+
+@media (max-width: 570px) {
+  /* ... other styles ... */
+
+  .input-field {
+    height: 40px; /* reduce height */
+    margin: 5px 0; /* reduce margin */
+  }
+
+  .input-field i {
+    line-height: 40px; /* adjust line height to match input field height */
+  }
+
+  .btn {
+    height: 40px; /* reduce height */
+    width: 120px; /* reduce width */
+    margin: 5px 0; /* reduce margin */
   }
 }
 

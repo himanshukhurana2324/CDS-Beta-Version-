@@ -32,11 +32,13 @@ def dashboard(request):
         # Get the cdsAnalysis data
         cds_analysis_data = symptoms.cdsAnalysis
         
+        # Sort the data by timestamp
+        sorted_cds_analysis_data = sorted(cds_analysis_data, key=lambda item: item['timestamp'], reverse=True)
 
         # Create two lists: one for dates and one for cdsAnalysis values
-        dates = [item['timestamp'] for item in cds_analysis_data]
-        cds_analysis_values = [item['value'] for item in cds_analysis_data]
+        dates = [datetime.strptime(item['timestamp'], '%Y-%m-%d %H:%M:%S').date().strftime('%Y-%m-%d') for item in sorted_cds_analysis_data][:15]
         
+        cds_analysis_values = [item['value'] for item in sorted_cds_analysis_data][:15]
     
     except ObjectDoesNotExist :
         
@@ -175,37 +177,7 @@ def overview(request):
     # Pass the data to the template
     return render(request, "overviewContainer.html", data)
 
-# def overview(request):
-#     current_user = signup.objects.get(email=request.user.email)
-#     try:
-#         symptoms = Symptoms.objects.get(patient=current_user)
-        
 
-#         # Get the cdsAnalysis data
-#         cds_analysis_data = symptoms.cdsAnalysis
-        
-
-#         # Create two lists: one for dates and one for cdsAnalysis values
-#         # dates = [item['timestamp'] for item in cds_analysis_data]
-#         dates = [datetime.strptime(item['timestamp'], '%Y-%m-%d %H:%M:%S').date().strftime('%Y-%m-%d') for item in cds_analysis_data]
-#         cds_analysis_values = [item['value'] for item in cds_analysis_data][-10:]
-        
-    
-#     except ObjectDoesNotExist :
-        
-#         # If the user has not been tested, set dates and cds_analysis_values to empty lists
-#         dates = []
-#         cds_analysis_values = []
-#     data = {
-#         'dates': json.dumps(dates),
-#         'cds_analysis_values': json.dumps(cds_analysis_values),
-#         'userName': current_user.username,
-#     }
-    
-
-#     # Pass the data to the template
-#     return render(request, "overviewContainer.html", data)
-    
 
 def product(request): 
     return render(request,"productContainer.html")

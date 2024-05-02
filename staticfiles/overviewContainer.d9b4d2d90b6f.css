@@ -1,0 +1,228 @@
+.main--container {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.section--title {
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  width: fit-content;
+  margin: auto auto 20px 1em;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  animation: zoomIn 1s ease-out;
+}
+
+@media (max-width: 768px) {
+  .section--title {
+    font-size: 18px;
+    padding: 15px;
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section--title {
+    font-size: 14px;
+    margin-bottom: 5px;
+    padding: 10px;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.card {
+  transition: transform 0.3s, opacity 0.3s;
+  width: 30em;
+  height: 25em;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(60deg, #ffffff 0%, #eaf3f4 100%);
+  background-size: 200% 200%;
+  padding: 20px;
+  color: #006064;
+}
+
+.card:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+iframe {
+  width: 100%;
+  height: 376px;
+  border: 1px solid #06869f;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 600px) {
+  iframe {
+    width: 100%;
+    overflow: auto;
+  }
+
+  .cards {
+    flex-direction: column;
+  }
+
+  .card {
+    margin-bottom: 20px;
+  }
+}
+
+.chart {
+  width: 100%;
+  height: auto;
+}
+
+.cards {
+  display: flex;
+  overflow-x: scroll;
+}
+
+.card {
+  flex: 0 0 auto;
+}
+
+canvas {
+  width: 100% !important;
+  height: auto !important;
+  animation: zoomIn 1s ease-out;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.card {
+  /* other styles... */
+  opacity: 0;
+}
+
+.card:nth-child(odd) {
+  animation: slideInFromLeft 0.7s forwards;
+}
+
+.card:nth-child(even) {
+  animation: slideInFromRight 0.6s forwards;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.chatbot-toggler {
+  background-color: #033875 !important;
+  border: none !important;
+  color: white !important;
+  padding: 15px !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  display: flex !important;
+  /* Changed from inline-block to flex */
+  justify-content: center !important;
+  /* Added to center horizontally */
+  align-items: center !important;
+  /* Added to center vertically */
+  font-size: 16px !important;
+  margin: 4px 2px !important;
+  cursor: pointer !important;
+  border-radius: 50% !important;
+}
+
+.material-symbols-rounded,
+.material-symbols-outlined {
+  color: white !important;
+}
+
+.chatbot {
+  background-color: #efeff6 !important;
+  /* Navy blue */
+  color: white !important;
+}
+
+.chatbot header {
+  background-color: #0b316b !important;
+  /* Navy blue */
+  color: white !important;
+}
+
+.chatbot .chat-input {
+  background-color: #f3f3f6 !important;
+  /* Navy blue */
+  color: white !important;
+}
+
+.material-symbols-outlined,
+.material-symbols-rounded {
+  color: white !important;
+}
+
+.close-btn {
+  color: white !important;
+}
+
+#send-btn {
+  background-color: white !important;
+  color: #000080 !important;
+  /* Navy blue */
+}

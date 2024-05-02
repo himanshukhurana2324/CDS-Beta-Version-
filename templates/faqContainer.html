@@ -1,221 +1,7 @@
-{% extends 'dashboard.html' %}
-
-{% block content %}
+{% extends 'dashboard.html' %} {% block content %}
 
 <head>
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
-
-
-    @keyframes zoomIn {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f4f4f6;
-      transition: background-color 0.5s ease;
-    }
-
-    .faq-section {
-      max-width: 95%;
-      margin: 0 auto;
-      border-radius: 10px;
-      overflow: hidden;
-      background: #fff;
-      box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-      transition: transform 0.5s ease, box-shadow 0.5s ease;
-      animation: zoomIn 0.7s ease;
-    }
-
-    .faq-section:hover {
-      transform: scale(1.02);
-      box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
-    }
-
-    @media (max-width: 600px) {
-      .faq-section header {
-        padding: 18px;
-      }
-
-      .faq-section header>p {
-        font-size: 10px;
-      }
-
-      .faq-section h2 {
-        font-size: 22px;
-      }
-
-      .faq-section summary {
-        font-size: 10px;
-      }
-
-      .faq-section h4 {
-        padding: 6px 12px;
-      }
-
-      .faq-section details>p {
-        font-size: 9px;
-        padding: 0 15px 10px;
-      }
-    }
-
-    @media (max-width: 800px) {
-      .faq-section {
-        max-width: 95%;
-        max-height: fit-content;
-        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-      }
-
-      .faq-section:hover {
-        transform: none;
-      }
-    }
-
-    .faq-section summary {
-      font-size: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: font-size 0.3s ease, background-color 0.3s ease;
-    }
-
-    .faq-section summary:hover {
-      background-color: #f0f0f0;
-    }
-
-    .faq-section:hover summary {
-      font-size: 17px;
-    }
-
-    .faq-section header {
-      padding: 40px;
-      background: linear-gradient(135deg, #0848a0 0%, #336fa3 50%, #147d9d 100%);
-      background-size: 200% 200%;
-      animation: Gradient 3s ease infinite;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      color: #fff;
-      border-radius: 10px;
-    }
-
-    @keyframes Gradient {
-      0% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-
-    .faq-section header>p {
-      font-size: 20px;
-      opacity: 0.9;
-      transition: font-size 0.5s ease;
-    }
-
-    .faq-section:hover header>p {
-      font-size: 19px;
-    }
-
-    .faq-section h2 {
-      font-size: 38px;
-      margin-top: 0;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      transition: font-size 0.5s ease;
-    }
-
-    .faq-section:hover h2 {
-      font-size: 40px;
-    }
-
-    details {
-      cursor: pointer;
-      border-bottom: 1px solid #ddd;
-      transition: padding 0.5s ease;
-    }
-
-    details[open] {
-      padding: 20px 0;
-    }
-
-    summary:focus-visible {
-      outline: 2px solid orange;
-      outline-offset: 8px;
-      border-radius: 4px;
-    }
-
-    .faq-section h4 {
-      color: #333;
-      margin: 0;
-      padding: 15px 25px;
-      transition: padding 0.5s ease;
-    }
-
-    .faq-section:hover h4 {
-      padding: 18px 28px;
-    }
-
-    .faq-section summary {
-      font-size: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: font-size 0.5s ease;
-    }
-
-    .faq-section:hover summary {
-      font-size: 20px;
-    }
-
-    summary::marker {
-      display: none;
-    }
-
-    span {
-      color: #333;
-      transition: transform 0.5s ease;
-    }
-
-    details[open] span {
-      transform: rotate(180deg);
-    }
-
-    .faq-section details>p {
-      color: #666;
-      font-size: 18px;
-      line-height: 155%;
-      letter-spacing: .1px;
-      padding: 0 25px 15px;
-      margin: 0;
-      transition: font-size 0.5s ease, padding 0.5s ease;
-    }
-
-    .faq-section:hover details>p {
-      font-size: 18px;
-      padding: 8px 28px 23px;
-    }
-
-    hr {
-      display: none;
-    }
-  </style>
+  <link rel="stylesheet" href="/static/faqContainer.css" />
 </head>
 
 <div class="main--container">
@@ -227,61 +13,81 @@
 
     <details>
       <summary>
-        <h4>Why is Raycast free for personal use?</h4>
+        <h4>
+          How does your prediction system operate without revealing sensitive
+          details?
+        </h4>
         <span class="material-symbols-outlined">expand_more</span>
       </summary>
-      <p>We think of Raycast as a productivity layer that everybody should use to get work done faster. To make it
-        accessible, we don't charge for the individual plan. The plan covers all built-in extensions, such as Clipboard
-        History, Calendar or Window Management and provides access to all public extensions built by our community.</p>
+      <p>
+        Our prediction system employs a robust algorithm, encompassing a total
+        of 486 rules, to analyze input data related to specific symptoms
+        discreetly. By maintaining confidentiality, we ensure that user
+        information remains secure throughout the prediction process.
+      </p>
     </details>
 
-    <hr>
+    <hr />
 
     <details>
       <summary>
-        <h4>When is Raycast for teams available?</h4>
+        <h4>What are the six symptoms used in your prediction system?</h4>
         <span class="material-symbols-outlined">expand_more</span>
       </summary>
-      <p>We don't have an exact date right now, but we will launch Raycast for Teams in 2022. You can sign up to get
-        early
-        access above, and be the first to hear when we're launching it.</p>
+      <p>
+        The six symptoms used in our prediction system are [Abdominal Pain,
+        Anemia, Vomiting, Diarrhea, Weight Loss, BMI]. These symptoms play a
+        crucial role in assessing or predicting certain outcomes or conditions,
+        and our model analyzes their values to generate predictions.
+      </p>
     </details>
 
-    <hr>
+    <hr />
 
     <details>
       <summary>
-        <h4>How many seats do I get in a Team plan?</h4>
+        <h4>
+          How frequently is your prediction system updated or recalibrated?
+        </h4>
         <span class="material-symbols-outlined">expand_more</span>
       </summary>
-      <p>We don't have an exact date right now, but we will launch Raycast for Teams in 2022. You can sign up to get
-        early
-        access above, and be the first to hear when we're launching it.</p>
+      <p>
+        Our prediction system undergoes regular updates and recalibration
+        processes to ensure its effectiveness and accuracy. Updates may include
+        adjustments to the underlying skfuzzy model, improvements based on
+        feedback or new research, and refinements to accommodate changing
+        conditions or user needs.
+      </p>
     </details>
 
-    <hr>
+    <hr />
 
     <details>
       <summary>
-        <h4>Can I have personal Extensions and Team Extensions?</h4>
+        <h4>Can users access historical predictions or assessments generated by your system?</h4>
         <span class="material-symbols-outlined">expand_more</span>
       </summary>
-      <p>Yes, you can create personal Extensions that are personalized to you, and speed up your productivity, and have
-        team Extensions that can be shared around in your organization for everyone to use. Team Extensions will be
-        available in the Store command, behind a filter for your Team. This is where all of your Team Extensions will
-        live, and where you can install them.</p>
+      <p>
+        Yes, users can access last 15 predictions generated by our system in the Chart of the
+        Overview Page, depending on the specific
+        implementation or configuration. Historical data may provide insights into past predictions and their outcomes,
+        allowing
+        users to evaluate the performance and reliability of the system over time.
+      </p>
     </details>
 
-    <hr>
+    <hr />
 
     <details>
       <summary>
-        <h4>How much will Team features cost?</h4>
+        <h4>Are there any limitations or considerations users should be aware of when using your prediction system?</h4>
         <span class="material-symbols-outlined">expand_more</span>
       </summary>
-      <p>Team features will cost $10 per user, per month.</p>
+      <p>While our prediction system is highly reliable and secure, users should be aware of certain limitations and
+        considerations. These include the need to ensure accurate input data and the inherent uncertainty associated
+        with
+        predictive modeling, all while maintaining confidentiality.</p>
     </details>
-
   </div>
 </div>
 

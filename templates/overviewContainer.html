@@ -47,23 +47,25 @@
         /* Green background */
         color: white;
         /* White text */
-        padding: 15px 32px;
+        padding: 1em;
         /* Padding around the text */
         text-align: center;
         /* Center the text */
         margin-left: 3%;
+        /* Left margin */
         text-decoration: none;
         /* Remove underline from the text */
-        font-size: 16px;
+        font-size: 1em;
+        /* Font size */
         cursor: pointer;
         /* Change cursor to pointer when hovering over the button */
         border: none;
         /* Remove default button border */
-        width: 200px;
-        /* Set the width of the div */
-        height: 50px;
-        /* Set the height of the div */
-        border-radius: 18px;
+        width: 50vw;
+        /* Set the width of the div to 50% of the viewport width */
+        height: 10vh;
+        /* Set the height of the div to 10% of the viewport height */
+        border-radius: 2em;
         /* Add rounded corners to the div */
         transition: background-color 0.3s ease-in-out;
         /* This will animate the background-color property over 0.3 seconds */
@@ -89,22 +91,18 @@
 
     @media (max-width: 600px) {
         .run-button {
-            width: 50%;
-            /* Set the width to 100% on small screens */
+            width: 50vw;
+            /* Set the width to 50% of the viewport width */
             height: auto;
             /* Let the height adjust automatically based on the content */
-            padding: 10px 20px;
+            padding: 1em 2em;
             /* Reduce the padding on small screens */
-            font-size: 12px;
+            font-size: 0.75em;
             /* Reduce the font size on small screens */
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 5%;
-            margin-bottom: 5%;
-        }
-
-        .run-button {
-            /* ...existing styles... */
+            margin-top: 5vh;
+            /* Top margin set to 5% of the viewport height */
+            margin-bottom: 5vh;
+            /* Bottom margin set to 5% of the viewport height */
             transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
             /* Add transform to the transition property */
         }

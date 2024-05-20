@@ -560,10 +560,10 @@
 
                             <div class="resultPage">Getting Your Result </div>
                             <br><br><br>
-                            <div class="redirectPage">
+                            <!-- <div class="redirectPage">
                                 <h1 class="redirectHeading">Redirecting in 5 seconds...</h1>
 
-                            </div>
+                            </div> -->
                             <a href="overview"><button class="Return-btn ">BACK</button> </a>
                         </div>
                         <div id="overview-url" data-url="{% url 'overview' %}" style="display: none;"></div>
@@ -699,27 +699,27 @@
                     }
 
 
-                    let countdown = 10;
-                    let countdownInterval = setInterval(function () {
-                        countdown -= 1;
-                        if (countdown >= 0) {
-                            // Update the result div with the countdown
-                            redirectPage.style.display = 'block';
-                            setTimeout(function () {
-                                redirectPage.style.opacity = '1';
-                            }, 50);
-
-                            redirectHeading.textContent = 'Getting Back ' + countdown.toFixed(1) + ' seconds...';
-
-                        } else {
-                            // Stop the countdown when it reaches 0
-                            clearInterval(countdownInterval);
-
-                            // Redirect to overview.html
-                            let overviewUrl = document.querySelector('#overview-url').dataset.url;
-                            window.location.href = overviewUrl;
-                        }
-                    }, 500);
+                    //   let countdown = 10;
+                    //   let countdownInterval = setInterval(function () {
+                    //       countdown -= 1;
+                    //       if (countdown >= 0) {
+                    //           // Update the result div with the countdown
+                    //           redirectPage.style.display = 'block';
+                    //           setTimeout(function () {
+                    //               redirectPage.style.opacity = '1';
+                    //           }, 50);
+                    //
+                    //           redirectHeading.textContent = 'Getting Back ' + countdown.toFixed(1) + ' seconds...';
+                    //
+                    //       } else {
+                    //           // Stop the countdown when it reaches 0
+                    //           clearInterval(countdownInterval);
+                    //
+                    //           // Redirect to overview.html
+                    //           let overviewUrl = document.querySelector('#overview-url').dataset.url;
+                    //           window.location.href = overviewUrl;
+                    //       }
+                    //   }, 500);
                 })
                 .catch(error => {
                     console.error('Error:', error);

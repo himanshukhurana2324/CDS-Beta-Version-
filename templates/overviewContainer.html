@@ -3,13 +3,33 @@
 {% block content %}
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/static/overviewContainer.css">
+<style>
+    @media (max-width: 600px) {
+        .appCard1 {
+            width: 100%;
+            height: 65vh;
+            /* This sets the height to 100% of the viewport height */
+            overflow: auto;
+            /* This allows the iframe to scroll if the content is larger than the iframe */
+            position: relative;
+            /* This allows the iframe to be positioned relative to the card */
+        }
+
+        .appCard1 iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            /* This removes the border around the iframe */
+        }
+    }
+</style>
 <div class="main--container">
 
     <h3 class="section--title">Welcome back, {{userName}}</h3>
 
 
     <div class="cards">
-        <div class="card">
+        <div class=" card appCard1">
             <iframe src="https://www.apollo247.com" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes"
                 allowfullscreen></iframe>
         </div>

@@ -43,7 +43,7 @@
     }
 
     .run-button {
-        background-color: #4CAF50;
+        background-color: #2f8432;
         /* Green background */
         color: white;
         /* White text */
@@ -61,9 +61,9 @@
         /* Change cursor to pointer when hovering over the button */
         border: none;
         /* Remove default button border */
-        width: 50vw;
+        width: 24vh;
         /* Set the width of the div to 50% of the viewport width */
-        height: 10vh;
+        height: 8vh;
         /* Set the height of the div to 10% of the viewport height */
         border-radius: 2em;
         /* Add rounded corners to the div */
@@ -71,10 +71,6 @@
         /* This will animate the background-color property over 0.3 seconds */
     }
 
-    .run-button:hover {
-        background-color: #45a049;
-        /* This will change the background color when hovered over */
-    }
 
     .run-button {
         /* ...existing styles... */
@@ -83,7 +79,7 @@
     }
 
     .run-button:hover {
-        background-color: #45a049;
+        background-color: #226925;
         /* This will change the background color when hovered over */
         transform: scale(0.95);
         /* This will shrink the button to 95% of its original size when hovered over */
@@ -91,7 +87,7 @@
 
     @media (max-width: 600px) {
         .run-button {
-            width: 50vw;
+            width: 45vw;
             /* Set the width to 50% of the viewport width */
             height: auto;
             /* Let the height adjust automatically based on the content */
@@ -99,9 +95,9 @@
             /* Reduce the padding on small screens */
             font-size: 0.75em;
             /* Reduce the font size on small screens */
-            margin-top: 5vh;
+            margin-top: 2vh;
             /* Top margin set to 5% of the viewport height */
-            margin-bottom: 5vh;
+            margin-bottom: 2vh;
             /* Bottom margin set to 5% of the viewport height */
             transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
             /* Add transform to the transition property */
@@ -120,7 +116,7 @@
     <h3 class="section--title">Welcome back, {{userName}}</h3>
 
     <a href="calculate">
-        <div class=" section--title run-button">RUN CHECK NOW!</div>
+        <span class=" section--title run-button">RUN TEST NOW!</span>
     </a>
 
 
